@@ -50,7 +50,7 @@ const roomsData = [
     bed: '2 King Beds',
     bath: '1 Bathroom',
     desc: 'Specially designed suite featuring exquisite teakwood furnishings, warm mood lighting, and modern workspace. Ideal for premium corporate guests.',
-    image: '/bg.png',
+    image: '/blue_vista_bed.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Work Desk', 'Mini Bar', 'Premium Toiletries']
   }
 ];

@@ -16,7 +16,7 @@ body {
 .hero-container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/bg.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/blue_vista_bed.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -498,7 +498,7 @@ body {
 /* Hospitality Section */
 .hospitality-section {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/hospitality_bg.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/blue_vista_bed.jpg');
   background-size: cover;
   background-position: center;
   padding: 10rem 0 15rem 0;
@@ -2532,7 +2532,7 @@ body {
 
 /* Call To Action Banner */
 .support-cta-banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/hospitality_bg.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/blue_vista_bed.jpg');
   background-size: cover;
   background-position: center;
   padding: 8rem 2rem;
