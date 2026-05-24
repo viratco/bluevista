@@ -121,6 +121,25 @@ function App() {
   });
   const [amenityBooked, setAmenityBooked] = useState(false);
 
+  // Travel & Tours Support request form state
+  const [supportForm, setSupportForm] = useState({
+    name: '',
+    roomOrEmail: '',
+    category: 'travel',
+    dateNeeded: '',
+    details: '',
+    urgency: 'standard'
+  });
+  const [supportSubmitted, setSupportSubmitted] = useState(false);
+  const [supportRef, setSupportRef] = useState('');
+
+  const handleSupportSubmit = (e) => {
+    e.preventDefault();
+    const randomRef = 'REQ-' + Math.floor(100000 + Math.random() * 900000);
+    setSupportRef(randomRef);
+    setSupportSubmitted(true);
+  };
+
   // Auto-scroll to top on view change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -215,6 +234,7 @@ function App() {
               <span className={view === 'availability' ? 'active-tab' : ''} onClick={() => setView('availability')}>ROOMS <DownArrow /></span>
               <span className={view === 'dining' ? 'active-tab' : ''} onClick={() => setView('dining')}>DINING (VISTRA BISTRO) <DownArrow /></span>
               <span className={view === 'amenities' ? 'active-tab' : ''} onClick={() => setView('amenities')}>AMENITIES <DownArrow /></span>
+              <span className={view === 'travel-tours' || view === 'travel-tours-request' ? 'active-tab' : ''} onClick={() => setView('travel-tours')}>TRAVEL & TOURS <DownArrow /></span>
             </div>
           </div>
 
@@ -1149,6 +1169,285 @@ function App() {
         </div>
       )}
 
+      {/* VIEW: DEDICATED TRAVEL & TOURS SUPPORT HUB */}
+      {view === 'travel-tours' && (
+        <div className="support-page animate-fade-in">
+          {/* Subpage Hero Banner */}
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.95)), url("/bg.png")' }}>
+            <div className="hero-inner">
+              <p className="subtitle">EXCEPTIONAL GUEST SERVICES</p>
+              <h1 className="subpage-title">Travel & Tours</h1>
+              <p className="hero-desc">Elevate your stay at The Blue Vista with our dedicated on-site travel logistics assistance and curated local heritage sightseeing excursions.</p>
+            </div>
+          </div>
+
+          <div className="support-pillars">
+            {/* Pillar 1: Travel & Tour Assistance */}
+            <div className="support-pillar-card">
+              <span className="subtitle">LOGISTICS RESOURCE</span>
+              <h2>Transit & Logistics</h2>
+              <p className="pillar-lead">Hassle-free airport transfers, private chauffeur services, and local luxury transits.</p>
+              <p className="pillar-body-text">
+                Explore Greater Noida and the NCR region with peace of mind. Our travel desk helps active residents book high-end private transits, procure immediate event passes for the nearby India Expo Centre, and hire curated day transits.
+              </p>
+              <ul className="support-benefits-list">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Seamless airport pickups & drop-offs
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Private luxury chauffeur hire & luxury transits
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  India Expo Centre priority transport slots
+                </li>
+              </ul>
+              <div className="pillar-footer-info">
+                <span>HOURS: 24/7 CONCIERGE</span>
+                <span>DESK EXTENSION: 104</span>
+              </div>
+            </div>
+
+            {/* Pillar 2: Tours & Sightseeing */}
+            <div className="support-pillar-card">
+              <span className="subtitle">EXCURSIONS & GUIDES</span>
+              <h2>Tours & Sightseeing</h2>
+              <p className="pillar-lead">Curated local day trips, heritage monument tours, and multilingual private guides.</p>
+              <p className="pillar-body-text">
+                Discover the rich heritage and vibrant culture surrounding Greater Noida, Agra, and Delhi. Our dedicated tours desk organizes customized itineraries, secures priority monument entries, and pairs you with certified local storytelling experts.
+              </p>
+              <ul className="support-benefits-list">
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Taj Mahal & Agra Fort express private day tours
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Old Delhi heritage street food & bazaar walks
+                </li>
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  Certified multilingual guides & priority entries
+                </li>
+              </ul>
+              <div className="pillar-footer-info">
+                <span>HOURS: 07:00 AM - 11:00 PM</span>
+                <span>DESK EXTENSION: 109</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Excursions & Experience Showcase */}
+          <section className="gear-showcase-section">
+            <div className="showcase-title-area">
+              <p className="subtitle">EXPLORE & DISCOVER</p>
+              <h2>Curated Tours & Sightseeing</h2>
+              <p>Select from our popular tailored excursions and tour bookings, organized directly by our expert hospitality team.</p>
+            </div>
+            
+            <div className="gear-logo-grid">
+              <div className="gear-logo-card">
+                <div className="logo-symbol">🕌</div>
+                <h3>Taj Mahal Express</h3>
+                <span>Agra Day Tour</span>
+              </div>
+              <div className="gear-logo-card">
+                <div className="logo-symbol">🚶‍♂️</div>
+                <h3>Heritage Bazaar Walk</h3>
+                <span>Old Delhi Tour</span>
+              </div>
+              <div className="gear-logo-card">
+                <div className="logo-symbol">⛳</div>
+                <h3>Ansal Golf Day</h3>
+                <span>Greater Noida Tour</span>
+              </div>
+              <div className="gear-logo-card">
+                <div className="logo-symbol">🎫</div>
+                <h3>Expo Mart Priority</h3>
+                <span>Exhibition Passes</span>
+              </div>
+            </div>
+          </section>
+
+          {/* Call to Action Support Request Banner */}
+          <section className="support-cta-banner">
+            <div className="cta-banner-content">
+              <p className="subtitle">SUBMIT A SERVICE TICKET</p>
+              <h2>Need Travel Assistance or Tour Bookings?</h2>
+              <p>Active residents can request premium airport transfers, book certified tour guides, day excursions, or secure priority Expo Mart passes instantly. Our concierge team will organize your custom itinerary immediately.</p>
+              <button className="start-exploring-btn" onClick={() => setView('travel-tours-request')}>Request Support & Tours</button>
+            </div>
+          </section>
+        </div>
+      )}
+
+      {/* VIEW: SUPPORT & TOURS REQUEST FORM */}
+      {view === 'travel-tours-request' && (
+        <div className="support-apply-page animate-fade-in">
+          <div className="apply-header-area">
+            <p className="subtitle">SERVICE INQUIRY</p>
+            <h2>Request Support & Tours</h2>
+            <p>Fill out the travel concierge request below. Our on-site tours team will coordinate and confirm your custom local travel or transport schedule immediately.</p>
+          </div>
+
+          {supportSubmitted ? (
+            <div className="support-success-container animate-fade-in">
+              <div className="support-success-card">
+                <div className="success-icon" style={{ fontSize: '3rem', color: '#d8c3a5', marginBottom: '1.5rem' }}>✓</div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '1rem' }}>Request Logged!</h3>
+                <p style={{ color: '#a0a0a0', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                  Your travel and tours support request ticket has been dispatched to our on-site team. We will reach out to coordinate your custom itinerary and transit details shortly.
+                </p>
+
+                <div className="success-ticket-receipt">
+                  <div className="receipt-header">
+                    <h3>TRAVEL SERVICE TICKET</h3>
+                    <span className="ticket-id">{supportRef}</span>
+                  </div>
+                  <div className="receipt-details-grid">
+                    <div className="receipt-item">
+                      <span className="label">RESIDENT GUEST</span>
+                      <span className="val">{supportForm.name}</span>
+                    </div>
+                    <div className="receipt-item">
+                      <span className="label">ROOM OR EMAIL</span>
+                      <span className="val">{supportForm.roomOrEmail}</span>
+                    </div>
+                    <div className="receipt-item">
+                      <span className="label">SUPPORT AREA</span>
+                      <span className="val">{supportForm.category === 'travel' ? 'Transit & Logistics' : 'Tours & Excursions'}</span>
+                    </div>
+                    <div className="receipt-item">
+                      <span className="label">DATE REQUIRED</span>
+                      <span className="val">{supportForm.dateNeeded || 'Immediate / Today'}</span>
+                    </div>
+                    <div className="receipt-item">
+                      <span className="label">URGENCY LEVEL</span>
+                      <span className="val" style={{ textTransform: 'uppercase', color: supportForm.urgency === 'urgent' ? '#ff6b6b' : '#d8c3a5' }}>
+                        {supportForm.urgency}
+                      </span>
+                    </div>
+                    <div className="receipt-item full-width">
+                      <span className="label">DETAILS & REQUESTED SERVICE</span>
+                      <span className="val" style={{ fontStyle: 'italic', color: '#ccc', fontSize: '0.8rem', lineHeight: '1.4' }}>
+                        "{supportForm.details}"
+                      </span>
+                    </div>
+                  </div>
+                  <div className="receipt-footer-notes">
+                    <span>ESTIMATED CONFIRMATION: 15-30 MINS</span>
+                    <span>THE BLUE VISTA CONCIERGE</span>
+                  </div>
+                </div>
+
+                <button className="proceed-checkout-btn" onClick={() => {
+                  setSupportSubmitted(false);
+                  setSupportForm({
+                    name: '',
+                    roomOrEmail: '',
+                    category: 'travel',
+                    dateNeeded: '',
+                    details: '',
+                    urgency: 'standard'
+                  });
+                  setView('travel-tours');
+                }}>
+                  Return to Support Desk
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="support-form-card">
+              <form onSubmit={handleSupportSubmit} className="lux-checkout-form">
+                <h3>Residency & Tour Booking Details</h3>
+                
+                <div className="form-row-double">
+                  <div className="form-group">
+                    <label>Guest Name</label>
+                    <input 
+                      type="text" 
+                      value={supportForm.name}
+                      onChange={(e) => setSupportForm(prev => ({ ...prev, name: e.target.value }))}
+                      placeholder="John Doe" 
+                      required 
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Room Number (e.g. 302B) or Email Address</label>
+                    <input 
+                      type="text" 
+                      value={supportForm.roomOrEmail}
+                      onChange={(e) => setSupportForm(prev => ({ ...prev, roomOrEmail: e.target.value }))}
+                      placeholder="Suite 204 or guest@email.com" 
+                      required 
+                    />
+                  </div>
+                </div>
+
+                <div className="form-row-double">
+                  <div className="form-group">
+                    <label>Category of Request</label>
+                    <select 
+                      value={supportForm.category}
+                      onChange={(e) => setSupportForm(prev => ({ ...prev, category: e.target.value }))}
+                    >
+                      <option value="travel">Transit & Logistics (Airport Transfer, Cab Booking)</option>
+                      <option value="tours">Curated Tours & Sightseeing (Excursions, Private Guides)</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>Urgency Level</label>
+                    <select 
+                      value={supportForm.urgency}
+                      onChange={(e) => setSupportForm(prev => ({ ...prev, urgency: e.target.value }))}
+                    >
+                      <option value="standard">Standard (Within 2 Hours)</option>
+                      <option value="urgent">Urgent / Priority (Within 15-30 Minutes)</option>
+                      <option value="scheduled">Scheduled for Specific Time</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Required Date & Time</label>
+                  <input 
+                    type="text" 
+                    value={supportForm.dateNeeded}
+                    onChange={(e) => setSupportForm(prev => ({ ...prev, dateNeeded: e.target.value }))}
+                    placeholder="e.g. Today 5 PM, or Tomorrow morning" 
+                    required
+                  />
+                </div>
+
+                <h3 style={{ marginTop: '2.5rem' }}>Itinerary & Booking Details</h3>
+                
+                <div className="form-group">
+                  <label>Describe your travel or tour plans in detail (e.g., Specific excursions, flight numbers, pickup locations)</label>
+                  <textarea 
+                    value={supportForm.details}
+                    onChange={(e) => setSupportForm(prev => ({ ...prev, details: e.target.value }))}
+                    rows="5" 
+                    placeholder="e.g. I would like to book a private day excursion to the Taj Mahal tomorrow starting at 7:00 AM, including an English-speaking guide. Or: Please arrange airport transit to IGI Terminal 3 tomorrow at 2:00 PM."
+                    required
+                  ></textarea>
+                </div>
+
+                <div className="form-actions" style={{ marginTop: '3rem' }}>
+                  <button type="button" className="checkout-back-btn" onClick={() => setView('travel-tours')}>
+                    Back to Support Hub
+                  </button>
+                  <button type="submit" className="checkout-confirm-btn">
+                    Submit Request
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* GLOBAL FOOTER */}
       <footer className="footer-section">
         <div className="footer-container">
@@ -1177,6 +1476,7 @@ function App() {
                 <li onClick={() => setView('availability')} style={{ cursor: 'pointer' }}><a onClick={(e) => { e.preventDefault(); setView('availability'); }}>Our Rooms</a></li>
                 <li onClick={() => setView('dining')} style={{ cursor: 'pointer' }}><a onClick={(e) => { e.preventDefault(); setView('dining'); }}>Dining Experiences</a></li>
                 <li onClick={() => setView('amenities')} style={{ cursor: 'pointer' }}><a onClick={(e) => { e.preventDefault(); setView('amenities'); }}>Wellness & Spa</a></li>
+                <li onClick={() => setView('travel-tours')} style={{ cursor: 'pointer' }}><a onClick={(e) => { e.preventDefault(); setView('travel-tours'); }}>Travel & Tours Support</a></li>
                 <li><a href="#">Local Tours</a></li>
                 <li><a href="#">Contact Us</a></li>
               </ul>
