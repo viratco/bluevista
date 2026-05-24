@@ -16,7 +16,7 @@ body {
 .hero-container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.65)), url('/blue_vista_actual.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('/blue_vista_hero_day.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -498,7 +498,7 @@ body {
 /* Hospitality Section */
 .hospitality-section {
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/blue_vista_bed.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)), url('/blue_vista_actual.jpg');
   background-size: cover;
   background-position: center;
   padding: 10rem 0 15rem 0;
