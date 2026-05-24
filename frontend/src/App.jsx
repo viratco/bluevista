@@ -115,7 +115,7 @@ function App() {
     name: '',
     email: '',
     phone: '',
-    amenity: 'Soma Spa',
+    amenity: 'Garden Terrace Tea',
     date: '',
     notes: ''
   });
@@ -198,7 +198,7 @@ function App() {
     setAmenityBooked(true);
     setTimeout(() => {
       setAmenityBooked(false);
-      setAmenityForm({ name: '', email: '', phone: '', amenity: 'Soma Spa', date: '', notes: '' });
+      setAmenityForm({ name: '', email: '', phone: '', amenity: 'Garden Terrace Tea', date: '', notes: '' });
     }, 6000);
   };
 
@@ -360,25 +360,25 @@ function App() {
             </div>
 
             <div className="grid-item text-item">
-              <p className="subtitle">RELAXATION</p>
-              <h3 className="grid-heading">Rejuvenate & Unwind</h3>
+              <p className="subtitle">OUTDOOR LIVING</p>
+              <h3 className="grid-heading">Lush Garden Terrace</h3>
               <p className="grid-desc">
-                After a long day of meetings or sightseeing, find your center and relax in our peaceful areas designed to restore your energy and calm your mind.
+                Unwind on our beautifully landscaped outdoor garden terrace and patio. The perfect spot to enjoy high tea, read, or catch a tranquil sunset over the Ansal Golf Links valley.
               </p>
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
             <div className="grid-item img-item">
-              <img src="/spa.png" alt="Spa and Wellness" />
+              <img src="/blue_vista_terrace.png" alt="Lush Garden Terrace and Outdoor Lounge" />
             </div>
 
             <div className="grid-item img-item">
-              <img src="/gym.png" alt="Workout and Yoga Room" />
+              <img src="/blue_vista_lounge.png" alt="Modern Business Lounge Workstation" />
             </div>
             <div className="grid-item text-item">
-              <p className="subtitle">FITNESS CENTER</p>
-              <h3 className="grid-heading">Stay Active</h3>
+              <p className="subtitle">EXECUTIVE SPACE</p>
+              <h3 className="grid-heading">Modern Business Lounge</h3>
               <p className="grid-desc">
-                Keep up with your wellness routine while traveling. Our modern fitness center features standard equipment to ensure a complete and satisfying workout.
+                A quiet, professional workspace equipped with secure high-speed Wi-Fi, elegant wooden furnishings, and complete business services to ensure seamless productivity.
               </p>
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
@@ -1021,11 +1021,11 @@ function App() {
       {view === 'amenities' && (
         <div className="amenities-page animate-fade-in">
           {/* Subpage Hero */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/spa.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/blue_vista_terrace.png")' }}>
             <div className="hero-inner">
               <p className="subtitle">LUXURY AMENITIES & MEETING HALLS</p>
-              <h1 className="subpage-title">Facilities & Wellness</h1>
-              <p className="hero-desc">Experience our sanctuary of absolute balance. From therapeutic Ayurvedic programs at Soma Spa to active spaces and elegant corporate boardrooms.</p>
+              <h1 className="subpage-title">Facilities & Experiences</h1>
+              <p className="hero-desc">Experience our tailored services. From high tea on our lush garden terrace patio to modern meeting boardrooms and standard business lounge hubs.</p>
             </div>
           </div>
 
@@ -1033,26 +1033,26 @@ function App() {
             {/* Left Content detailing Spa, Gym, Events */}
             <div className="amenities-cards-column">
               
-              {/* Card 1: Soma Wellness Spa */}
+              {/* Card 1: Lush Garden Terrace & Patio */}
               <div className="amenity-detail-card">
-                <img src="/spa.png" alt="Soma Spa Wellness" className="amenity-card-hero-img" />
+                <img src="/blue_vista_terrace.png" alt="Lush Garden Terrace and Outdoor Lounge" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
-                  <span className="card-tag">WELLNESS SANCTUARY</span>
-                  <h2>Soma Wellness Spa</h2>
-                  <p className="card-lead">Rebalance body, mind, and spirit with our authentic restorative therapies.</p>
+                  <span className="card-tag">OUTDOOR LIVING</span>
+                  <h2>Lush Garden Terrace & Patio</h2>
+                  <p className="card-lead">Unwind on our beautifully landscaped outdoor garden terrace and patio.</p>
                   <p className="card-body-text">
-                    Drawing from time-tested Ayurvedic rituals and premium organic botanicals, Soma Spa offers an escape from the city rush. Indulge in warm herbal oil massaged by professional therapists, sensory facial treatments, and refreshing steam suites designed to purge toxins and leaves a timeless natural radiance.
+                    Nestled overlooking the scenic Ansal Golf Links valley, our lush garden terrace offers a refreshing escape under the open Greater Noida sky. Enjoy single-origin cold brews or traditional slow-brewed kesaria chai from Vistra Bistro in a tranquil outdoor setting, perfect for reading, casual meetings, or watching the sunset.
                   </p>
                   <div className="amenity-specs">
-                    <span><strong>Hours:</strong> 09:00 AM - 09:00 PM</span>
-                    <span><strong>Services:</strong> Ayurvedic Massage, Steam Bath, Herbal Wraps</span>
+                    <span><strong>Hours:</strong> 06:00 AM - 11:00 PM</span>
+                    <span><strong>Services:</strong> High Tea, Sunset View, Outdoor Seating</span>
                   </div>
                 </div>
               </div>
 
               {/* Card 2: Modern Meeting Spaces */}
               <div className="amenity-detail-card">
-                <img src="/meeting.png" alt="Boutique Meeting Rooms" className="amenity-card-hero-img" />
+                <img src="/blue_vista_img1.png" alt="Celebration at Blue Vista Banquet" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
                   <span className="card-tag">BUSINESS & CELEBRATIONS</span>
                   <h2>Boutique Boardrooms & Event Halls</h2>
@@ -1067,19 +1067,19 @@ function App() {
                 </div>
               </div>
 
-              {/* Card 3: Vigor Fitness Centre */}
+              {/* Card 3: Modern Business Lounge */}
               <div className="amenity-detail-card">
-                <img src="/gym.png" alt="Vigor Gym Workout Room" className="amenity-card-hero-img" />
+                <img src="/blue_vista_lounge.png" alt="Modern Business Lounge Workstation" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
-                  <span className="card-tag">ACTIVE LIVING</span>
-                  <h2>Vigor Fitness Studio</h2>
-                  <p className="card-lead">Preserve your active fitness regimen with our premium workout equipment.</p>
+                  <span className="card-tag">EXECUTIVE SERVICES</span>
+                  <h2>Modern Business Lounge</h2>
+                  <p className="card-lead">Maintain seamless professional productivity with our standard business lounge workstation.</p>
                   <p className="card-body-text">
-                    Featuring elite cardiovascular treadmills, heavy strength-training dumbells, cable machines, and professional yoga mats, our fitness centre ensures a high-energy routine. Open 24/7 for hotel residents wishing to pursue full physical conditioning.
+                    Equipped with ergonomic seating, secure high-speed Wi-Fi, and standard workstations, our business lounge provides a quiet environment to focus. Perfect for business travelers who require photocopying, document printing, or quick executive standups.
                   </p>
                   <div className="amenity-specs">
                     <span><strong>Hours:</strong> 24 Hours (Residents)</span>
-                    <span><strong>Equipped:</strong> Free Weights, Cardio Station, Yoga Mats</span>
+                    <span><strong>Equipped:</strong> Secure Wi-Fi, Workstations, Printing/Scanning</span>
                   </div>
                 </div>
               </div>
@@ -1109,9 +1109,9 @@ function App() {
                         value={amenityForm.amenity}
                         onChange={(e) => setAmenityForm(prev => ({ ...prev, amenity: e.target.value }))}
                       >
-                        <option value="Soma Spa Slot">Soma Wellness Spa slot</option>
+                        <option value="Garden Terrace Tea">Garden Terrace High Tea Session</option>
                         <option value="Boutique Boardrooms">Boutique Boardroom (Corporate)</option>
-                        <option value="Vigor Gym Class">Gym Personal Training Session</option>
+                        <option value="Business Lounge Station">Business Lounge Workstation</option>
                       </select>
                     </div>
 
