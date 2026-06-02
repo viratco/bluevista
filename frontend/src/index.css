@@ -10,18 +10,24 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #fff;
   overflow-x: hidden;
-  background-color: #1a1a1a;
+  background-color: #0c0c0e; /* Set global dark canvas for luxury brand */
 }
 
 .hero-container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6)), url('/blue_vista_hero_day.png');
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.85)), url('/blue_vista_hero_day.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
+}
+
+.hero-container.subpage-header {
+  background-image: none !important;
+  background-color: #0c0c0e !important;
+  border-bottom: 1px solid rgba(216, 195, 165, 0.25) !important;
 }
 
 .top-bar {
@@ -155,56 +161,55 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 2rem;
-  margin-top: -5rem; /* Adjusting for optical vertical centering */
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  padding: 0 6%;
+  padding-bottom: 6rem;
+  width: 100%;
+  position: relative;
 }
 
 .welcome-text {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  color: #d8c3a5; /* A warm, golden/beige color matching the stars/accents */
+  letter-spacing: 0.3em;
+  color: #d8c3a5;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
+  border-left: 2px solid #d8c3a5;
+  padding-left: 1rem;
 }
 
 .main-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 4.5rem;
+  font-size: clamp(4rem, 7vw, 7.5rem);
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  margin-bottom: 4rem;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
 }
 
 .booking-bar {
   display: flex;
-  border: 1px solid rgba(216, 195, 165, 0.6); /* Warm golden border */
-  padding: 2px; /* For the inner border effect if we want, or just spacing */
-  background: transparent;
-  position: relative;
-}
-
-/* Inner border effect */
-.booking-bar::after {
-  content: '';
+  background: rgba(12, 12, 14, 0.85);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(216, 195, 165, 0.2);
+  border-left: 1px solid rgba(216, 195, 165, 0.2);
+  padding: 0;
   position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 4px;
-  bottom: 4px;
-  border: 1px solid rgba(216, 195, 165, 0.3);
-  pointer-events: none;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 4px;
 }
 
 .booking-item {
   display: flex;
-  align-items: center;
-  padding: 1.25rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem 2.5rem;
   position: relative;
 }
 
@@ -212,16 +217,19 @@ body {
   content: '';
   position: absolute;
   right: 0;
-  top: 20%;
-  height: 60%;
+  top: 25%;
+  height: 50%;
   width: 1px;
-  background-color: rgba(216, 195, 165, 0.4);
+  background-color: rgba(216, 195, 165, 0.2);
 }
 
 .booking-item .label {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  margin-right: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .booking-item .value {
@@ -257,46 +265,58 @@ body {
 
 /* About Section */
 .about-section {
-  display: flex;
-  padding: 8rem 10%;
-  background-color: #1a1a1a;
-  gap: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 12rem 5%;
+  background-color: #0c0c0e; /* Pure luxury dark background */
   align-items: center;
+  position: relative;
+  border-bottom: 1px solid rgba(216, 195, 165, 0.1);
 }
 
 .about-images {
-  flex: 1;
+  grid-column: 2; /* Force images to the right side */
   position: relative;
-  height: 600px;
+  height: 800px;
+  width: 100%;
 }
 
 .img-main {
-  width: 70%;
-  height: 85%;
+  width: 85%;
+  height: 90%;
   object-fit: cover;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 1;
+  border: 1px solid rgba(216, 195, 165, 0.15); /* Delicate frame */
+  background-color: transparent;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
 .img-overlay {
-  width: 60%;
-  height: 65%;
+  width: 55%;
+  height: 60%;
   object-fit: cover;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: -5%;
+  left: -15%; /* Pull out to overlap text */
   z-index: 2;
-  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(216, 195, 165, 0.25);
+  padding: 8px;
+  background-color: #141416;
+  box-shadow: 15px -15px 35px rgba(0, 0, 0, 0.7);
 }
 
 .about-content {
-  flex: 1;
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 500px;
+  max-width: 650px;
+  padding-left: 5%;
+  z-index: 3;
 }
 
 .subtitle {
@@ -309,9 +329,9 @@ body {
 
 .about-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-size: 5rem; /* Massive heading */
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.05;
   margin-bottom: 2rem;
 }
 
@@ -372,11 +392,19 @@ body {
 
 /* Dining Section */
 .dining-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #0c0c0e;
+  border-bottom: 1px solid rgba(216, 195, 165, 0.1);
+  position: relative;
+  align-items: stretch;
 }
 
 .dining-left {
-  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 800px;
 }
 
 .dining-main-img {
@@ -384,67 +412,76 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-right: 1px solid rgba(216, 195, 165, 0.2);
 }
 
 .dining-right {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: #5c6c54; /* Olive green */
+  justify-content: center;
+  background-color: transparent;
+  padding: 0 10%;
+  position: relative;
 }
 
 .dining-content {
-  padding: 8rem 4rem 4rem 4rem;
-  max-width: 650px;
+  max-width: 600px;
 }
 
 .dining-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+  font-size: 4.5rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: 2rem;
+  color: #ffffff;
 }
 
 .dining-desc {
-  font-size: 0.85rem;
-  line-height: 1.9;
-  color: #e0e5df;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #a0a0a0;
   margin-bottom: 3rem;
 }
 
 .dining-food-img {
-  width: 100%;
-  max-height: 50vh;
+  position: absolute;
+  bottom: -5%;
+  left: -15%;
+  width: 50%;
+  max-width: 400px;
   object-fit: cover;
-  display: block;
-  align-self: flex-end;
+  border: 1px solid rgba(216, 195, 165, 0.25);
+  padding: 8px;
+  background-color: #141416;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  z-index: 5;
 }
 
 /* Services Section */
 .services-section {
   display: flex;
-  background-color: #151515; /* slightly darker than #1a1a1a if desired, or same */
-  padding: 8rem 10%;
+  background-color: #0c0c0e; /* Pure luxury dark background */
+  padding: 15rem 10%;
+  border-bottom: 1px solid rgba(216, 195, 165, 0.1);
 }
 
 .services-content {
   flex: 1;
-  max-width: 700px;
+  max-width: 900px;
 }
 
 .services-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+  font-size: 4.5rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: 2rem;
 }
 
 .services-desc {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.9;
   color: #a0a0a0;
 }
 
@@ -456,9 +493,10 @@ body {
 .facilities-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1200px;
-  margin: 0 auto 6rem auto;
-  background-color: #050505; /* Very dark background for the text blocks */
+  width: 100%;
+  background-color: #0c0c0e;
+  border-bottom: 1px solid rgba(216, 195, 165, 0.15);
+  margin-bottom: 10rem;
 }
 
 .grid-item {
@@ -467,17 +505,32 @@ body {
   justify-content: center;
 }
 
+.grid-item.img-item {
+  overflow: hidden;
+  position: relative;
+  height: 500px;
+}
+
 .grid-item.img-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  min-height: 400px;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.grid-item.img-item:hover img {
+  transform: scale(1.06);
 }
 
 .grid-item.text-item {
-  padding: 4rem 12%;
-  background-color: #050505;
+  padding: 6rem 12%;
+  background-color: #141416; /* Clean charcoal matted background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid rgba(216, 195, 165, 0.05);
 }
 
 .grid-heading {
@@ -486,11 +539,12 @@ body {
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
 .grid-desc {
-  font-size: 0.85rem;
-  line-height: 1.9;
+  font-size: 0.9rem;
+  line-height: 1.8;
   color: #a0a0a0;
   margin-bottom: 2.5rem;
 }
@@ -544,15 +598,21 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  border: 1px solid rgba(216, 195, 165, 0.25);
+  border-right: none;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .testimonial-right {
   flex-grow: 1;
-  background-color: #5c6c54;
-  padding: 4rem 5rem;
+  background-color: #141416; /* Charcoal luxury dark card */
+  border: 1px solid rgba(216, 195, 165, 0.25);
+  border-left: none;
+  padding: 4rem 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .testimonial-right-content {
@@ -562,12 +622,15 @@ body {
 .testimonial-stars {
   display: flex;
   margin-bottom: 2rem;
+  color: #d8c3a5; /* Pure luxury gold */
 }
 
 .testimonial-text {
-  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.25rem;
   line-height: 1.8;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 2.5rem;
 }
 
@@ -576,14 +639,16 @@ body {
 }
 
 .author-name {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
   margin-bottom: 0.2rem;
 }
 
 .author-source {
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  color: #c0c5bf; /* Lighter olive matching the stars */
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #d8c3a5; /* Gold brand source reference */
 }
 
 .testimonial-dots {
@@ -605,9 +670,10 @@ body {
 
 /* Discover Section */
 .discover-section {
-  padding: 8rem 5%;
-  max-width: 1300px;
-  margin: 0 auto;
+  padding: 10rem 10%;
+  background-color: #0c0c0e; /* Pure luxury dark background */
+  border-top: 1px solid rgba(216, 195, 165, 0.1);
+  width: 100%;
 }
 
 .discover-header {
@@ -634,28 +700,50 @@ body {
 .discover-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 4rem;
   align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .discover-card {
-  border: 1px solid rgba(216, 195, 165, 0.4); /* Golden border */
   position: relative;
-  background-color: #1a1a1a;
+  background-color: transparent; /* Pure minimalist background */
   display: flex;
   flex-direction: column;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.discover-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background-color: #d8c3a5;
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.discover-card:hover {
+  /* Removed translation and shadow for pure minimalist image focus */
+}
+
+.discover-card:hover::after {
+  width: 100%;
 }
 
 .discover-card.offset-card {
-  margin-top: 4rem; /* Push the middle card down */
+  margin-top: 6rem; /* Increase offset for more asymmetry */
 }
 
 .card-badge {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
-  background-color: #fff;
-  color: #000;
+  background-color: #d8c3a5; /* Gold brand color */
+  color: #0c0c0e;
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.4rem 0.8rem;
@@ -665,23 +753,24 @@ body {
 
 .card-img-wrapper {
   width: 100%;
-  height: 280px;
+  height: 350px; /* Taller editorial images */
   overflow: hidden;
+  position: relative;
 }
 
 .card-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .discover-card:hover .card-img-wrapper img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .card-content {
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 0 1rem 0; /* Minimalist: no side padding, sits flush with image edge */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -689,9 +778,10 @@ body {
 
 .card-heading {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem; /* Larger heading */
   font-weight: 400;
   margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
 .card-desc {
@@ -812,42 +902,50 @@ body {
   font-weight: 600;
 }
 
-.footer-newsletter p {
+.footer-inquiry p {
   color: #a0a0a0;
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
 }
 
-.newsletter-form {
+.footer-inquiry-form {
   display: flex;
-  border-bottom: 1px solid rgba(216, 195, 165, 0.4);
-  padding-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
-.newsletter-form input {
-  flex-grow: 1;
-  background: transparent;
-  border: none;
+.footer-inquiry-form .form-group input,
+.footer-inquiry-form .form-group textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 195, 165, 0.2);
+  padding: 0.8rem 1rem;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   outline: none;
+  transition: border-color 0.3s ease;
 }
 
-.newsletter-form input::placeholder {
-  color: #666;
+.footer-inquiry-form .form-group input:focus,
+.footer-inquiry-form .form-group textarea:focus {
+  border-color: #d8c3a5;
 }
 
-.newsletter-form button {
-  background: transparent;
+.footer-inquiry-form .submit-inquiry-btn {
+  background: #d8c3a5;
+  color: #0c0c0e;
   border: none;
-  color: #d8c3a5;
+  padding: 0.8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: background 0.3s ease;
+  margin-top: 0.5rem;
 }
 
-.newsletter-form button:hover {
-  color: #fff;
+.footer-inquiry-form .submit-inquiry-btn:hover {
+  background: #fff;
 }
 
 .footer-bottom {

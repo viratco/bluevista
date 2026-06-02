@@ -81,63 +81,29 @@ function App() {
   const [guests, setGuests] = useState('2 Adults, 0 Children');
   const [selectedRoom, setSelectedRoom] = useState(null);
   
-  // Dynamic filter for Dining Menu Page
-  const [menuTab, setMenuTab] = useState('allday');
-  
-  // Checkout details form state
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    cardNumber: '',
-    expiry: '',
-    cvc: '',
-    requests: ''
-  });
-  
-  const [bookingRef, setBookingRef] = useState('');
+  const [inquiryStatus, setInquiryStatus] = useState(''); // '', 'submitting', 'success', 'error'
 
-  // Table reservation form state (Vistra Bistro)
-  const [tableForm, setTableForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    guests: '2',
-    date: '',
-    time: '20:00',
-    requests: ''
-  });
-  const [tableBooked, setTableBooked] = useState(false);
-
-  // Spa / Meeting reservation state
-  const [amenityForm, setAmenityForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    amenity: 'Garden Terrace Tea',
-    date: '',
-    notes: ''
-  });
-  const [amenityBooked, setAmenityBooked] = useState(false);
-
-  // Travel & Tours Support request form state
-  const [supportForm, setSupportForm] = useState({
-    name: '',
-    roomOrEmail: '',
-    category: 'travel',
-    dateNeeded: '',
-    details: '',
-    urgency: 'standard'
-  });
-  const [supportSubmitted, setSupportSubmitted] = useState(false);
-  const [supportRef, setSupportRef] = useState('');
-
-  const handleSupportSubmit = (e) => {
-    e.preventDefault();
-    const randomRef = 'REQ-' + Math.floor(100000 + Math.random() * 900000);
-    setSupportRef(randomRef);
-    setSupportSubmitted(true);
+  const handleInquirySubmit = async (e) => {
+    if (e) e.preventDefault();
+    setInquiryStatus('submitting');
+    try {
+      const formData = new FormData(e.target);
+      const response = await fetch("https://formsubmit.co/ajax/thebluevista@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      const data = await response.json();
+      if (response.ok && data.success === 'true') {
+        setInquiryStatus('success');
+      } else {
+        setInquiryStatus('error');
+      }
+    } catch (err) {
+      setInquiryStatus('error');
+    }
   };
 
   // Auto-scroll to top on view change
@@ -164,43 +130,7 @@ function App() {
     setSelectedRoom(room);
   };
 
-  const handleProceedToCheckout = () => {
-    if (selectedRoom) {
-      setView('checkout');
-    }
-  };
 
-  const handleFormChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleConfirmBooking = (e) => {
-    e.preventDefault();
-    const randomRef = 'BVT-' + Math.floor(100000 + Math.random() * 900000);
-    setBookingRef(randomRef);
-    setView('success');
-  };
-
-  // Table Booking logic
-  const handleTableSubmit = (e) => {
-    e.preventDefault();
-    setTableBooked(true);
-    setTimeout(() => {
-      setTableBooked(false);
-      setTableForm({ name: '', email: '', phone: '', guests: '2', date: '', time: '20:00', requests: '' });
-    }, 6000);
-  };
-
-  // Amenity Booking logic
-  const handleAmenitySubmit = (e) => {
-    e.preventDefault();
-    setAmenityBooked(true);
-    setTimeout(() => {
-      setAmenityBooked(false);
-      setAmenityForm({ name: '', email: '', phone: '', amenity: 'Garden Terrace Tea', date: '', notes: '' });
-    }, 6000);
-  };
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
@@ -213,7 +143,7 @@ function App() {
   return (
     <>
       {/* GLOBAL NAVBAR / HEADER */}
-      <div className="hero-container" style={{ minHeight: view === 'home' ? '100vh' : 'auto', height: view === 'home' ? 'auto' : '150px' }}>
+      <div className={`hero-container ${view !== 'home' ? 'subpage-header' : ''}`} style={{ minHeight: view === 'home' ? '100vh' : 'auto', height: view === 'home' ? 'auto' : '150px' }}>
         <div className="top-bar">
           <div className="top-left">CB-008, Omega 1, Block C, Ansal Golf Links 1, Greater Noida, UP 201310</div>
           <div className="top-right">
@@ -234,7 +164,7 @@ function App() {
               <span className={view === 'availability' ? 'active-tab' : ''} onClick={() => setView('availability')}>ROOMS <DownArrow /></span>
               <span className={view === 'dining' ? 'active-tab' : ''} onClick={() => setView('dining')}>DINING (VISTRA BISTRO) <DownArrow /></span>
               <span className={view === 'amenities' ? 'active-tab' : ''} onClick={() => setView('amenities')}>AMENITIES <DownArrow /></span>
-              <span className={view === 'travel-tours' || view === 'travel-tours-request' ? 'active-tab' : ''} onClick={() => setView('travel-tours')}>TRAVEL & TOURS <DownArrow /></span>
+              <span className={view === 'travel-tours' ? 'active-tab' : ''} onClick={() => setView('travel-tours')}>TRAVEL & TOURS <DownArrow /></span>
             </div>
           </div>
 
@@ -604,9 +534,23 @@ function App() {
                       </div>
                     </div>
 
-                    <button className="proceed-checkout-btn" onClick={handleProceedToCheckout}>
-                      Proceed to Booking
-                    </button>
+                    <a 
+                      href={`mailto:sales@thebluevistahotel.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
+                      className="proceed-checkout-btn"
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}
+                    >
+                      Inquire via Email
+                    </a>
+                    
+                    <a 
+                      href={`https://wa.me/918527847888?text=Hello%20Blue%20Vista%20Concierge!%20I%20would%20like%20to%20inquire%20about%20booking%20the%20${encodeURIComponent(selectedRoom.name)}%20from%20${checkIn}%20to%20${checkOut}%20for%20${encodeURIComponent(guests)}.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="checkout-back-btn" 
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}
+                    >
+                      Inquire via WhatsApp
+                    </a>
                   </div>
                 ) : (
                   <div className="no-room-selected">
@@ -616,274 +560,6 @@ function App() {
                 )}
               </div>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* VIEW: CHECKOUT FORM */}
-      {view === 'checkout' && selectedRoom && (
-        <div className="checkout-page animate-fade-in">
-          <div className="checkout-container">
-            <div className="checkout-header">
-              <h2>Complete Your Reservation</h2>
-              <p>Secure booking for {selectedRoom.name} • {nights} {nights > 1 ? 'nights' : 'night'}</p>
-            </div>
-            
-            <div className="checkout-grid-layout">
-              {/* Form panel */}
-              <div className="checkout-form-panel">
-                <form onSubmit={handleConfirmBooking} className="lux-checkout-form">
-                  <h3>Guest Information</h3>
-                  <div className="form-row-double">
-                    <div className="form-group">
-                      <label>First Name</label>
-                      <input 
-                        type="text" 
-                        name="firstName" 
-                        value={formData.firstName}
-                        onChange={handleFormChange}
-                        placeholder="John" 
-                        required 
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Last Name</label>
-                      <input 
-                        type="text" 
-                        name="lastName" 
-                        value={formData.lastName}
-                        onChange={handleFormChange}
-                        placeholder="Doe" 
-                        required 
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-row-double">
-                    <div className="form-group">
-                      <label>Email Address</label>
-                      <input 
-                        type="email" 
-                        name="email" 
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        placeholder="john.doe@example.com" 
-                        required 
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Phone Number</label>
-                      <input 
-                        type="tel" 
-                        name="phone" 
-                        value={formData.phone}
-                        onChange={handleFormChange}
-                        placeholder="+91 98765 43210" 
-                        required 
-                      />
-                    </div>
-                  </div>
-
-                  <h3 style={{ marginTop: '2.5rem' }}>Payment Details</h3>
-                  <div className="form-group">
-                    <label>Cardholder Name</label>
-                    <input type="text" placeholder="John Doe" required />
-                  </div>
-                  
-                  <div className="form-group">
-                    <label>Card Number</label>
-                    <input 
-                      type="text" 
-                      name="cardNumber"
-                      value={formData.cardNumber}
-                      onChange={handleFormChange}
-                      placeholder="4111 2222 3333 4444" 
-                      maxLength="19"
-                      required 
-                    />
-                  </div>
-
-                  <div className="form-row-double">
-                    <div className="form-group">
-                      <label>Expiration Date</label>
-                      <input 
-                        type="text" 
-                        name="expiry"
-                        value={formData.expiry}
-                        onChange={handleFormChange}
-                        placeholder="MM / YY" 
-                        maxLength="7"
-                        required 
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>CVC / CVV</label>
-                      <input 
-                        type="password" 
-                        name="cvc"
-                        value={formData.cvc}
-                        onChange={handleFormChange}
-                        placeholder="***" 
-                        maxLength="3"
-                        required 
-                      />
-                    </div>
-                  </div>
-
-                  <div className="form-group" style={{ marginTop: '1.5rem' }}>
-                    <label>Special Requests (Optional)</label>
-                    <textarea 
-                      name="requests" 
-                      value={formData.requests}
-                      onChange={handleFormChange}
-                      rows="4" 
-                      placeholder="Let us know if you require airport pickup, early check-in, dietary restrictions, etc."
-                    ></textarea>
-                  </div>
-
-                  <div className="form-actions">
-                    <button type="button" className="checkout-back-btn" onClick={() => setView('availability')}>
-                      Back to Rooms
-                    </button>
-                    <button type="submit" className="checkout-confirm-btn">
-                      Confirm Secure Booking
-                    </button>
-                  </div>
-                </form>
-              </div>
-
-              {/* Order summary panel */}
-              <div className="checkout-summary-panel">
-                <div className="checkout-summary-card">
-                  <h3>Booking Invoice</h3>
-                  <div className="divider"></div>
-                  
-                  <div className="checkout-room-preview">
-                    <img src={selectedRoom.image} alt={selectedRoom.name} />
-                    <div className="preview-info">
-                      <h4>{selectedRoom.name}</h4>
-                      <p>{selectedRoom.capacity} • {selectedRoom.size}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="divider"></div>
-                  <div className="checkout-invoice-rows">
-                    <div className="invoice-row">
-                      <span>Check-In:</span>
-                      <strong>{checkIn}</strong>
-                    </div>
-                    <div className="invoice-row">
-                      <span>Check-Out:</span>
-                      <strong>{checkOut}</strong>
-                    </div>
-                    <div className="invoice-row">
-                      <span>Total Stay:</span>
-                      <strong>{nights} {nights > 1 ? 'nights' : 'night'}</strong>
-                    </div>
-                    <div className="invoice-row">
-                      <span>Guests:</span>
-                      <strong>{guests}</strong>
-                    </div>
-                    
-                    <div className="divider"></div>
-                    <div className="invoice-row">
-                      <span>Room Subtotal:</span>
-                      <span>{formatPrice(selectedRoom.price * nights)}</span>
-                    </div>
-                    <div className="invoice-row">
-                      <span>GST / Service Fee (12%):</span>
-                      <span>{formatPrice(selectedRoom.price * nights * 0.12)}</span>
-                    </div>
-                    <div className="divider"></div>
-                    <div className="invoice-row total-row">
-                      <span>Grand Total:</span>
-                      <span className="price-primary">{formatPrice((selectedRoom.price * nights) * 1.12)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* VIEW: BOOKING SUCCESS PAGE */}
-      {view === 'success' && selectedRoom && (
-        <div className="booking-success-page">
-          <div className="success-card animate-fade-in">
-            <div className="success-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3" stroke="#d8c3a5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            
-            <h2 className="success-title">Reservation Confirmed!</h2>
-            <p className="success-subtitle">Thank you for choosing The Blue Vista Hotel. We are thrilled to welcome you soon.</p>
-            
-            <div className="success-ticket">
-              <div className="ticket-header">
-                <h3>THE BLUE VISTA HOTEL</h3>
-                <span className="ref-number">{bookingRef}</span>
-              </div>
-              
-              <div className="ticket-body">
-                <div className="ticket-col">
-                  <span className="label">GUEST</span>
-                  <span className="val">{formData.firstName} {formData.lastName}</span>
-                </div>
-                <div className="ticket-col">
-                  <span className="label">ROOM</span>
-                  <span className="val">{selectedRoom.name}</span>
-                </div>
-                <div className="ticket-col">
-                  <span className="label">CHECK IN</span>
-                  <span className="val">{checkIn}</span>
-                </div>
-                <div className="ticket-col">
-                  <span className="label">CHECK OUT</span>
-                  <span className="val">{checkOut}</span>
-                </div>
-                <div className="ticket-col">
-                  <span className="label">NIGHTS</span>
-                  <span className="val">{nights}</span>
-                </div>
-                <div className="ticket-col">
-                  <span className="label">GUESTS</span>
-                  <span className="val">{guests}</span>
-                </div>
-              </div>
-              
-              <div className="ticket-footer">
-                <span>TOTAL AMOUNT CHARGED:</span>
-                <span className="price-tag">{formatPrice((selectedRoom.price * nights) * 1.12)}</span>
-              </div>
-            </div>
-            
-            <div className="success-instructions">
-              <h4>Important Check-In Instructions</h4>
-              <ul>
-                <li>Standard check-in time starts at **02:00 PM**. Check-out is by **11:00 AM**.</li>
-                <li>Please present a valid government-issued photo ID upon check-in.</li>
-                <li>A booking confirmation email has been dispatched to **{formData.email}**.</li>
-              </ul>
-            </div>
-            
-            <button className="return-home-btn" onClick={() => {
-              setSelectedRoom(null);
-              setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                cardNumber: '',
-                expiry: '',
-                cvc: '',
-                requests: ''
-              });
-              setView('home');
-            }}>
-              Return to Homepage
-            </button>
           </div>
         </div>
       )}
@@ -932,85 +608,42 @@ function App() {
               </div>
             </div>
 
-            {/* Table Reservation Sidebar */}
+            {/* Table Reservation Info Section */}
             <div className="table-reservation-section">
               <div className="sticky-sidebar-card glass-morphic">
-                <h3>Reserve A Table</h3>
+                <h3>Vistra Bistro Dining</h3>
                 <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Secure your sitting room or garden terrace overlook table at Vistra Bistro.</p>
                 <div className="divider"></div>
                 
-                {tableBooked ? (
-                  <div className="booking-complete-alert animate-fade-in">
-                    <div className="success-icon">✓</div>
-                    <h4>Table Reserved!</h4>
-                    <p style={{ fontSize: '0.8rem', color: '#a0a0a0', textAlign: 'center', marginTop: '0.5rem' }}>
-                      A secure table has been blocked for {tableForm.guests} guests on {tableForm.date || 'today'} at {tableForm.time}. We look forward to hosting you.
-                    </p>
+                <div className="dining-info-details" style={{ fontSize: '0.85rem', lineHeight: '1.8', color: '#cccccc' }}>
+                  <div className="info-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                    <span style={{ color: '#d8c3a5' }}>HOURS:</span>
+                    <span>07:00 AM - 11:30 PM</span>
                   </div>
-                ) : (
-                  <form onSubmit={handleTableSubmit} className="sidebar-booking-form">
-                    <div className="form-group">
-                      <label>Your Name</label>
-                      <input 
-                        type="text" 
-                        value={tableForm.name}
-                        onChange={(e) => setTableForm(prev => ({ ...prev, name: e.target.value }))}
-                        placeholder="John Doe" 
-                        required 
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Contact Number</label>
-                      <input 
-                        type="tel" 
-                        value={tableForm.phone}
-                        onChange={(e) => setTableForm(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="+91 98765 43210" 
-                        required 
-                      />
-                    </div>
-                    
-                    <div className="form-row-double">
-                      <div className="form-group">
-                        <label>Guests</label>
-                        <select 
-                          value={tableForm.guests}
-                          onChange={(e) => setTableForm(prev => ({ ...prev, guests: e.target.value }))}
-                        >
-                          <option value="1">1 Person</option>
-                          <option value="2">2 People</option>
-                          <option value="4">4 People</option>
-                          <option value="6">6 People</option>
-                          <option value="8+">8+ People</option>
-                        </select>
-                      </div>
-                      <div className="form-group">
-                        <label>Time</label>
-                        <input 
-                          type="time" 
-                          value={tableForm.time}
-                          onChange={(e) => setTableForm(prev => ({ ...prev, time: e.target.value }))}
-                          required 
-                        />
-                      </div>
-                    </div>
-                    
-                    <div className="form-group">
-                      <label>Date</label>
-                      <input 
-                        type="date" 
-                        value={tableForm.date}
-                        onChange={(e) => setTableForm(prev => ({ ...prev, date: e.target.value }))}
-                        min={new Date().toISOString().split('T')[0]}
-                        required 
-                      />
-                    </div>
-                    
-                    <button type="submit" className="proceed-checkout-btn" style={{ marginTop: '1rem' }}>
-                      Reserve Instantly
-                    </button>
-                  </form>
-                )}
+                  <div className="info-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                    <span style={{ color: '#d8c3a5' }}>CUISINE:</span>
+                    <span>Local Indian & International Gourmet</span>
+                  </div>
+                  <div className="info-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                    <span style={{ color: '#d8c3a5' }}>DRESS CODE:</span>
+                    <span>Smart Casual</span>
+                  </div>
+                  
+                  <div className="divider" style={{ margin: '1.5rem 0' }}></div>
+                  
+                  <h4 style={{ color: '#fff', fontFamily: "'Playfair Display', serif", fontSize: '1.1rem', marginBottom: '0.75rem' }}>Table Reservations</h4>
+                  <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>
+                    We welcome walk-ins, but highly recommend securing a table in advance, especially for dinner and weekend brunches.
+                  </p>
+                  
+                  <a href="tel:+918527847888" className="proceed-checkout-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
+                    Call Concierge to Reserve
+                  </a>
+                  
+                  <a href="mailto:sales@thebluevistahotel.com?subject=Vistra Bistro Table Reservation Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                    Inquire via Email
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1089,80 +722,31 @@ function App() {
             {/* Right Booking / Inquiries Column */}
             <div className="amenities-inquiry-column">
               <div className="sticky-sidebar-card glass-morphic">
-                <h3>Book Facilities</h3>
-                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Schedule spa times, secure boardrooms, or request corporate tour layouts.</p>
+                <h3>Private Bookings</h3>
+                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Schedule boardrooms, host private events, or request custom terrace catering layouts.</p>
                 <div className="divider"></div>
 
-                {amenityBooked ? (
-                  <div className="booking-complete-alert animate-fade-in">
-                    <div className="success-icon">✓</div>
-                    <h4>Request Received!</h4>
-                    <p style={{ fontSize: '0.8rem', color: '#a0a0a0', textAlign: 'center', marginTop: '0.5rem' }}>
-                      We have logged your request for <strong>{amenityForm.amenity}</strong> on {amenityForm.date || 'scheduled date'}. Our concierge team will reach out within 2 hours to confirm your private slot.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleAmenitySubmit} className="sidebar-booking-form">
-                    <div className="form-group">
-                      <label>Select Facility</label>
-                      <select 
-                        value={amenityForm.amenity}
-                        onChange={(e) => setAmenityForm(prev => ({ ...prev, amenity: e.target.value }))}
-                      >
-                        <option value="Garden Terrace Tea">Garden Terrace High Tea Session</option>
-                        <option value="Boutique Boardrooms">Boutique Boardroom (Corporate)</option>
-                        <option value="Business Lounge Station">Business Lounge Workstation</option>
-                      </select>
-                    </div>
+                <div className="amenities-info-details" style={{ fontSize: '0.85rem', lineHeight: '1.8', color: '#cccccc' }}>
+                  <h4 style={{ color: '#d8c3a5', fontFamily: "'Playfair Display', serif", fontSize: '1rem', marginBottom: '0.5rem' }}>Boardroom Bookings</h4>
+                  <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.25rem' }}>
+                    Boardrooms are available for hourly or full-day bookings. High-speed fiber internet and custom Vistra Bistro catering are fully included upon request.
+                  </p>
 
-                    <div className="form-group">
-                      <label>Your Name</label>
-                      <input 
-                        type="text" 
-                        value={amenityForm.name}
-                        onChange={(e) => setAmenityForm(prev => ({ ...prev, name: e.target.value }))}
-                        placeholder="John Doe" 
-                        required 
-                      />
-                    </div>
+                  <h4 style={{ color: '#d8c3a5', fontFamily: "'Playfair Display', serif", fontSize: '1rem', marginBottom: '0.5rem' }}>Terrace Gatherings</h4>
+                  <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>
+                    The outdoor Garden Terrace patio can be reserved for private high tea gatherings or elegant evening cocktails of up to 40 guests.
+                  </p>
 
-                    <div className="form-group">
-                      <label>Contact Number</label>
-                      <input 
-                        type="tel" 
-                        value={amenityForm.phone}
-                        onChange={(e) => setAmenityForm(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="+91 98765 43210" 
-                        required 
-                      />
-                    </div>
+                  <div className="divider" style={{ margin: '1.5rem 0' }}></div>
 
-                    <div className="form-group">
-                      <label>Preferred Date</label>
-                      <input 
-                        type="date" 
-                        value={amenityForm.date}
-                        onChange={(e) => setAmenityForm(prev => ({ ...prev, date: e.target.value }))}
-                        min={new Date().toISOString().split('T')[0]}
-                        required 
-                      />
-                    </div>
+                  <a href="tel:+918527847888" className="proceed-checkout-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
+                    Contact Tours & Events
+                  </a>
 
-                    <div className="form-group">
-                      <label>Special Instructions</label>
-                      <textarea 
-                        value={amenityForm.notes}
-                        onChange={(e) => setAmenityForm(prev => ({ ...prev, notes: e.target.value }))}
-                        rows="3" 
-                        placeholder="Specify massage therapy preference or meeting room seating layout (U-shaped, theatre, etc.)"
-                      ></textarea>
-                    </div>
-
-                    <button type="submit" className="proceed-checkout-btn" style={{ marginTop: '1rem' }}>
-                      Submit Inquiry
-                    </button>
-                  </form>
-                )}
+                  <a href="mailto:sales@thebluevistahotel.com?subject=Private Event & Boardroom Booking Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                    Send Booking Inquiry
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1173,7 +757,7 @@ function App() {
       {view === 'travel-tours' && (
         <div className="support-page animate-fade-in">
           {/* Subpage Hero Banner */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.95)), url("/bg.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.95)), url("/hospitality_bg.png")' }}>
             <div className="hero-inner">
               <p className="subtitle">EXCEPTIONAL GUEST SERVICES</p>
               <h1 className="subpage-title">Travel & Tours</h1>
@@ -1216,7 +800,7 @@ function App() {
               <h2>Tours & Sightseeing</h2>
               <p className="pillar-lead">Curated local day trips, heritage monument tours, and multilingual private guides.</p>
               <p className="pillar-body-text">
-                Discover the rich heritage and vibrant culture surrounding Greater Noida, Agra, and Delhi. Our dedicated tours desk organizes customized itineraries, secures priority monument entries, and pairs you with certified local storytelling experts.
+                Discover the rich heritage and vibrant culture surrounding Greater Noida, Agra, Mathura, Vrindavan, and Delhi. Our dedicated tours desk organizes customized itineraries, secures priority monument entries, and pairs you with certified local storytelling experts.
               </p>
               <ul className="support-benefits-list">
                 <li>
@@ -1225,7 +809,7 @@ function App() {
                 </li>
                 <li>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  Old Delhi heritage street food & bazaar walks
+                  Mathura & Vrindavan holy temple heritage excursions
                 </li>
                 <li>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1249,24 +833,24 @@ function App() {
             
             <div className="gear-logo-grid">
               <div className="gear-logo-card">
+                <div className="logo-symbol">🛕</div>
+                <h3>Mathura Heritage</h3>
+                <span>Krishna Janmabhoomi Tour</span>
+              </div>
+              <div className="gear-logo-card">
+                <div className="logo-symbol">🦚</div>
+                <h3>Vrindavan Spiritual</h3>
+                <span>Holy Temples Trail</span>
+              </div>
+              <div className="gear-logo-card">
                 <div className="logo-symbol">🕌</div>
-                <h3>Taj Mahal Express</h3>
-                <span>Agra Day Tour</span>
+                <h3>Agra & Taj Mahal</h3>
+                <span>Wonder of the World Tour</span>
               </div>
               <div className="gear-logo-card">
-                <div className="logo-symbol">🚶‍♂️</div>
-                <h3>Heritage Bazaar Walk</h3>
-                <span>Old Delhi Tour</span>
-              </div>
-              <div className="gear-logo-card">
-                <div className="logo-symbol">⛳</div>
-                <h3>Ansal Golf Day</h3>
-                <span>Greater Noida Tour</span>
-              </div>
-              <div className="gear-logo-card">
-                <div className="logo-symbol">🎫</div>
-                <h3>Expo Mart Priority</h3>
-                <span>Exhibition Passes</span>
+                <div className="logo-symbol">🏢</div>
+                <h3>Expo Mart Express</h3>
+                <span>Priority Passes & Shuttle</span>
               </div>
             </div>
           </section>
@@ -1274,177 +858,19 @@ function App() {
           {/* Call to Action Support Request Banner */}
           <section className="support-cta-banner">
             <div className="cta-banner-content">
-              <p className="subtitle">SUBMIT A SERVICE TICKET</p>
+              <p className="subtitle">DIRECT CONCIERGE ASSISTANCE</p>
               <h2>Need Travel Assistance or Tour Bookings?</h2>
               <p>Active residents can request premium airport transfers, book certified tour guides, day excursions, or secure priority Expo Mart passes instantly. Our concierge team will organize your custom itinerary immediately.</p>
-              <button className="start-exploring-btn" onClick={() => setView('travel-tours-request')}>Request Support & Tours</button>
+              
+              <a href="tel:+918527847888" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', marginRight: '1rem', lineHeight: '45px', height: '45px', padding: '0 2.5rem' }}>
+                Call Travel Desk
+              </a>
+              
+              <a href="mailto:sales@thebluevistahotel.com?subject=Travel & Tour Concierge Inquiry" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', lineHeight: '45px', height: '45px', padding: '0 2.5rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}>
+                Email Travel Desk
+              </a>
             </div>
           </section>
-        </div>
-      )}
-
-      {/* VIEW: SUPPORT & TOURS REQUEST FORM */}
-      {view === 'travel-tours-request' && (
-        <div className="support-apply-page animate-fade-in">
-          <div className="apply-header-area">
-            <p className="subtitle">SERVICE INQUIRY</p>
-            <h2>Request Support & Tours</h2>
-            <p>Fill out the travel concierge request below. Our on-site tours team will coordinate and confirm your custom local travel or transport schedule immediately.</p>
-          </div>
-
-          {supportSubmitted ? (
-            <div className="support-success-container animate-fade-in">
-              <div className="support-success-card">
-                <div className="success-icon" style={{ fontSize: '3rem', color: '#d8c3a5', marginBottom: '1.5rem' }}>✓</div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '1rem' }}>Request Logged!</h3>
-                <p style={{ color: '#a0a0a0', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                  Your travel and tours support request ticket has been dispatched to our on-site team. We will reach out to coordinate your custom itinerary and transit details shortly.
-                </p>
-
-                <div className="success-ticket-receipt">
-                  <div className="receipt-header">
-                    <h3>TRAVEL SERVICE TICKET</h3>
-                    <span className="ticket-id">{supportRef}</span>
-                  </div>
-                  <div className="receipt-details-grid">
-                    <div className="receipt-item">
-                      <span className="label">RESIDENT GUEST</span>
-                      <span className="val">{supportForm.name}</span>
-                    </div>
-                    <div className="receipt-item">
-                      <span className="label">ROOM OR EMAIL</span>
-                      <span className="val">{supportForm.roomOrEmail}</span>
-                    </div>
-                    <div className="receipt-item">
-                      <span className="label">SUPPORT AREA</span>
-                      <span className="val">{supportForm.category === 'travel' ? 'Transit & Logistics' : 'Tours & Excursions'}</span>
-                    </div>
-                    <div className="receipt-item">
-                      <span className="label">DATE REQUIRED</span>
-                      <span className="val">{supportForm.dateNeeded || 'Immediate / Today'}</span>
-                    </div>
-                    <div className="receipt-item">
-                      <span className="label">URGENCY LEVEL</span>
-                      <span className="val" style={{ textTransform: 'uppercase', color: supportForm.urgency === 'urgent' ? '#ff6b6b' : '#d8c3a5' }}>
-                        {supportForm.urgency}
-                      </span>
-                    </div>
-                    <div className="receipt-item full-width">
-                      <span className="label">DETAILS & REQUESTED SERVICE</span>
-                      <span className="val" style={{ fontStyle: 'italic', color: '#ccc', fontSize: '0.8rem', lineHeight: '1.4' }}>
-                        "{supportForm.details}"
-                      </span>
-                    </div>
-                  </div>
-                  <div className="receipt-footer-notes">
-                    <span>ESTIMATED CONFIRMATION: 15-30 MINS</span>
-                    <span>THE BLUE VISTA CONCIERGE</span>
-                  </div>
-                </div>
-
-                <button className="proceed-checkout-btn" onClick={() => {
-                  setSupportSubmitted(false);
-                  setSupportForm({
-                    name: '',
-                    roomOrEmail: '',
-                    category: 'travel',
-                    dateNeeded: '',
-                    details: '',
-                    urgency: 'standard'
-                  });
-                  setView('travel-tours');
-                }}>
-                  Return to Support Desk
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="support-form-card">
-              <form onSubmit={handleSupportSubmit} className="lux-checkout-form">
-                <h3>Residency & Tour Booking Details</h3>
-                
-                <div className="form-row-double">
-                  <div className="form-group">
-                    <label>Guest Name</label>
-                    <input 
-                      type="text" 
-                      value={supportForm.name}
-                      onChange={(e) => setSupportForm(prev => ({ ...prev, name: e.target.value }))}
-                      placeholder="John Doe" 
-                      required 
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Room Number (e.g. 302B) or Email Address</label>
-                    <input 
-                      type="text" 
-                      value={supportForm.roomOrEmail}
-                      onChange={(e) => setSupportForm(prev => ({ ...prev, roomOrEmail: e.target.value }))}
-                      placeholder="Suite 204 or guest@email.com" 
-                      required 
-                    />
-                  </div>
-                </div>
-
-                <div className="form-row-double">
-                  <div className="form-group">
-                    <label>Category of Request</label>
-                    <select 
-                      value={supportForm.category}
-                      onChange={(e) => setSupportForm(prev => ({ ...prev, category: e.target.value }))}
-                    >
-                      <option value="travel">Transit & Logistics (Airport Transfer, Cab Booking)</option>
-                      <option value="tours">Curated Tours & Sightseeing (Excursions, Private Guides)</option>
-                    </select>
-                  </div>
-                  <div className="form-group">
-                    <label>Urgency Level</label>
-                    <select 
-                      value={supportForm.urgency}
-                      onChange={(e) => setSupportForm(prev => ({ ...prev, urgency: e.target.value }))}
-                    >
-                      <option value="standard">Standard (Within 2 Hours)</option>
-                      <option value="urgent">Urgent / Priority (Within 15-30 Minutes)</option>
-                      <option value="scheduled">Scheduled for Specific Time</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label>Required Date & Time</label>
-                  <input 
-                    type="text" 
-                    value={supportForm.dateNeeded}
-                    onChange={(e) => setSupportForm(prev => ({ ...prev, dateNeeded: e.target.value }))}
-                    placeholder="e.g. Today 5 PM, or Tomorrow morning" 
-                    required
-                  />
-                </div>
-
-                <h3 style={{ marginTop: '2.5rem' }}>Itinerary & Booking Details</h3>
-                
-                <div className="form-group">
-                  <label>Describe your travel or tour plans in detail (e.g., Specific excursions, flight numbers, pickup locations)</label>
-                  <textarea 
-                    value={supportForm.details}
-                    onChange={(e) => setSupportForm(prev => ({ ...prev, details: e.target.value }))}
-                    rows="5" 
-                    placeholder="e.g. I would like to book a private day excursion to the Taj Mahal tomorrow starting at 7:00 AM, including an English-speaking guide. Or: Please arrange airport transit to IGI Terminal 3 tomorrow at 2:00 PM."
-                    required
-                  ></textarea>
-                </div>
-
-                <div className="form-actions" style={{ marginTop: '3rem' }}>
-                  <button type="button" className="checkout-back-btn" onClick={() => setView('travel-tours')}>
-                    Back to Support Hub
-                  </button>
-                  <button type="submit" className="checkout-confirm-btn">
-                    Submit Request
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
         </div>
       )}
 
@@ -1489,17 +915,49 @@ function App() {
               <p className="contact-detail"><span>E:</span> sales@thebluevistahotel.com</p>
             </div>
             
-            <div className="footer-newsletter">
-              <h3 className="footer-title">Newsletter</h3>
-              <p>Subscribe for exclusive offers and updates.</p>
-              <form className="newsletter-form">
-                <input type="email" placeholder="Email Address" required />
-                <button type="submit" aria-label="Subscribe">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </form>
+            <div className="footer-inquiry">
+              <h3 className="footer-title">Quick Inquiry</h3>
+              {inquiryStatus === 'success' ? (
+                <div className="inquiry-success-message animate-fade-in" style={{ padding: '1.5rem', background: 'rgba(216, 195, 165, 0.08)', border: '1px solid rgba(216, 195, 165, 0.3)', color: '#d8c3a5', borderRadius: '4px', textAlign: 'center' }}>
+                  <p style={{ fontSize: '1rem', fontWeight: '500', marginBottom: '0.5rem' }}>✓ Inquiry Sent</p>
+                  <p style={{ fontSize: '0.8rem', color: '#a0a0a0', margin: 0 }}>We will contact you shortly. Thank you!</p>
+                  <button 
+                    onClick={() => setInquiryStatus('')} 
+                    className="submit-inquiry-btn" 
+                    style={{ marginTop: '1rem', padding: '0.5rem 1rem', fontSize: '0.75rem', width: 'auto', display: 'inline-block' }}
+                  >
+                    Send Another
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <p>Drop us your number and inquiry. We will contact you shortly.</p>
+                  <form onSubmit={handleInquirySubmit} className="footer-inquiry-form">
+                    <div className="form-group">
+                      <input 
+                        type="tel" 
+                        name="number" 
+                        placeholder="Phone Number (e.g., +91 98765...)" 
+                        required 
+                      />
+                    </div>
+                    <div className="form-group">
+                      <textarea 
+                        name="inquiry" 
+                        placeholder="How can we help you?" 
+                        rows="3" 
+                        required 
+                      ></textarea>
+                    </div>
+                    {inquiryStatus === 'error' && (
+                      <p style={{ color: '#ff6b6b', fontSize: '0.75rem', marginBottom: '1rem' }}>⚠ Error sending inquiry. Please try again.</p>
+                    )}
+                    <button type="submit" className="submit-inquiry-btn" disabled={inquiryStatus === 'submitting'}>
+                      {inquiryStatus === 'submitting' ? 'Sending...' : 'Send Inquiry'}
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
           </div>
           
@@ -1518,6 +976,7 @@ function App() {
           <path d="M9 5L5 1L1 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </button>
+
     </>
   );
 }
