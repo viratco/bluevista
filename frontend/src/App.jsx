@@ -874,6 +874,100 @@ function App() {
         </div>
       )}
 
+      {/* VIEW: PRIVACY POLICY */}
+      {view === 'privacy-policy' && (
+        <div className="privacy-page animate-fade-in" style={{ backgroundColor: '#1a1a1a', color: '#fff', minHeight: '100vh' }}>
+          {/* Subpage Hero Banner */}
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.95)), url("/hospitality_bg.png")' }}>
+            <div className="hero-inner">
+              <p className="subtitle">LEGAL INFORMATION</p>
+              <h1 className="subpage-title" style={{ fontSize: '3rem' }}>Privacy Policy</h1>
+              <p className="hero-desc">UD Hospitality</p>
+            </div>
+          </div>
+
+          <div className="privacy-content-layout" style={{ maxWidth: '800px', margin: '0 auto', padding: '6rem 2rem', lineHeight: '1.8', color: '#cccccc' }}>
+            <p style={{ color: '#d8c3a5', fontSize: '0.9rem', marginBottom: '2rem' }}>Last Updated: June 3, 2026</p>
+            
+            <p style={{ marginBottom: '2rem', fontSize: '0.95rem' }}>
+              At UD Hospitality, we respect your privacy and are committed to protecting the personal information of our guests, website visitors, and customers. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, contact us, or book our services.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>1. Information We Collect</h2>
+            <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+              <li>Full name</li>
+              <li>Email address</li>
+              <li>Phone number</li>
+              <li>Postal address</li>
+              <li>Booking and reservation details</li>
+              <li>Payment-related information</li>
+              <li>Identification details required during check-in</li>
+              <li>Information voluntarily provided through contact forms or inquiries</li>
+            </ul>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>2. How We Use Your Information</h2>
+            <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+              <li>Process hotel reservations and bookings</li>
+              <li>Provide hospitality and accommodation services</li>
+              <li>Respond to inquiries and customer support requests</li>
+              <li>Send booking confirmations and service-related communications</li>
+              <li>Improve our services and customer experience</li>
+              <li>Comply with legal and regulatory requirements</li>
+            </ul>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>3. Sharing of Information</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              UD Hospitality does not sell, rent, or trade personal information to third parties.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>4. Data Security</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              We implement reasonable technical and organizational security measures to protect personal information from unauthorized access, disclosure, alteration, or destruction.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>5. Cookies and Website Analytics</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              Our website may use cookies and similar technologies to improve functionality, analyze traffic, and enhance user experience.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>6. Data Retention</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              We retain customer information only for as long as necessary to provide services and comply with legal obligations.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>7. Third-Party Links</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              Our website may contain links to third-party websites. We are not responsible for their privacy practices.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>8. Your Rights</h2>
+            <ul style={{ paddingLeft: '1.5rem', marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
+              <li>Access your personal information</li>
+              <li>Correct inaccurate information</li>
+              <li>Request deletion where legally permissible</li>
+              <li>Withdraw consent for marketing communications</li>
+            </ul>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>9. Children's Privacy</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              Our services are not intended for children under the age of 18 without parental supervision.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>10. Changes to This Privacy Policy</h2>
+            <p style={{ marginBottom: '2rem', fontSize: '0.9rem' }}>
+              We may update this Privacy Policy from time to time.
+            </p>
+
+            <h2 style={{ fontFamily: "'Playfair Display', serif", color: '#fff', fontSize: '1.6rem', marginTop: '3rem', marginBottom: '1rem', fontWeight: '400' }}>11. Contact Us</h2>
+            <p style={{ margin: 0, fontSize: '0.9rem' }}>
+              <strong>UD Hospitality</strong><br />
+              CB-0008, Golf Link-I, Greater Noida,<br />
+              Gautam Buddha Nagar, Uttar Pradesh, India
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* GLOBAL FOOTER */}
       <footer className="footer-section">
         <div className="footer-container">
@@ -964,7 +1058,7 @@ function App() {
           <div className="footer-bottom">
             <p>&copy; {new Date().getFullYear()} The Blue Vista Hotel. All rights reserved.</p>
             <div className="legal-links">
-              <a href="#">Privacy Policy</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); setView('privacy-policy'); }}>Privacy Policy</a>
               <a href="#">Terms of Service</a>
             </div>
           </div>
