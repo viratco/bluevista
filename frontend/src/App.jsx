@@ -75,7 +75,12 @@ const menuData = {
 };
 
 function App() {
-  const [view, setView] = useState('home'); // 'home', 'availability', 'checkout', 'success', 'dining', 'amenities'
+  const [view, setView] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/privacy-policy') {
+      return 'privacy-policy';
+    }
+    return 'home';
+  }); // 'home', 'availability', 'checkout', 'success', 'dining', 'amenities', 'privacy-policy'
   const [checkIn, setCheckIn] = useState('2026-05-17');
   const [checkOut, setCheckOut] = useState('2026-05-18');
   const [guests, setGuests] = useState('2 Adults, 0 Children');
@@ -105,6 +110,32 @@ function App() {
       setInquiryStatus('error');
     }
   };
+
+  // Handle browser navigation (back/forward buttons)
+  useEffect(() => {
+    const handlePopState = () => {
+      if (window.location.pathname === '/privacy-policy') {
+        setView('privacy-policy');
+      } else {
+        setView('home');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Sync URL pathname with view state
+  useEffect(() => {
+    if (view === 'privacy-policy') {
+      if (window.location.pathname !== '/privacy-policy') {
+        window.history.pushState(null, '', '/privacy-policy');
+      }
+    } else {
+      if (window.location.pathname === '/privacy-policy') {
+        window.history.pushState(null, '', '/');
+      }
+    }
+  }, [view]);
 
   // Auto-scroll to top on view change
   useEffect(() => {
