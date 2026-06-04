@@ -179,7 +179,7 @@ function App() {
           <div className="top-left">CB-008, Omega 1, Block C, Ansal Golf Links 1, Greater Noida, UP 201310</div>
           <div className="top-right">
             <span>TEL: +91 85278 47888</span>
-            <span>SALES@THEBLUEVISTAHOTEL.COM</span>
+            <span>THEBLUEVISTA@GMAIL.COM</span>
           </div>
         </div>
 
@@ -566,7 +566,7 @@ function App() {
                     </div>
 
                     <a 
-                      href={`mailto:sales@thebluevistahotel.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
+                      href={`mailto:thebluevista@gmail.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
                       className="proceed-checkout-btn"
                       style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}
                     >
@@ -671,7 +671,7 @@ function App() {
                     Call Concierge to Reserve
                   </a>
                   
-                  <a href="mailto:sales@thebluevistahotel.com?subject=Vistra Bistro Table Reservation Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                  <a href="mailto:thebluevista@gmail.com?subject=Vistra Bistro Table Reservation Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
                     Inquire via Email
                   </a>
                 </div>
@@ -774,7 +774,7 @@ function App() {
                     Contact Tours & Events
                   </a>
 
-                  <a href="mailto:sales@thebluevistahotel.com?subject=Private Event & Boardroom Booking Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                  <a href="mailto:thebluevista@gmail.com?subject=Private Event & Boardroom Booking Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
                     Send Booking Inquiry
                   </a>
                 </div>
@@ -897,7 +897,7 @@ function App() {
                 Call Travel Desk
               </a>
               
-              <a href="mailto:sales@thebluevistahotel.com?subject=Travel & Tour Concierge Inquiry" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', lineHeight: '45px', height: '45px', padding: '0 2.5rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}>
+              <a href="mailto:thebluevista@gmail.com?subject=Travel & Tour Concierge Inquiry" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', lineHeight: '45px', height: '45px', padding: '0 2.5rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}>
                 Email Travel Desk
               </a>
             </div>
@@ -1037,7 +1037,7 @@ function App() {
               <h3 className="footer-title">Contact</h3>
               <p>CB-008, Omega 1, Block C<br/>Ansal Golf Links 1, Greater Noida, UP 201310</p>
               <p className="contact-detail"><span>T:</span> +91 85278 47888</p>
-              <p className="contact-detail"><span>E:</span> sales@thebluevistahotel.com</p>
+              <p className="contact-detail"><span>E:</span> thebluevista@gmail.com</p>
             </div>
             
             <div className="footer-inquiry">
