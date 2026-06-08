@@ -92,6 +92,7 @@ function App() {
   const [checkOut, setCheckOut] = useState('2026-05-18');
   const [guests, setGuests] = useState('2 Adults, 0 Children');
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [menuTab, setMenuTab] = useState('bakery');
   
   const [inquiryStatus, setInquiryStatus] = useState(''); // '', 'submitting', 'success', 'error'
 
