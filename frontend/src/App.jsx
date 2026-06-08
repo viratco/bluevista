@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
 import './index.css';
 
+// Google Ads conversion tracking helper
+const fireGtagConversion = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', { 'send_to': 'AW-16789293166/GY7rCO-j5owaEO6Q4cU-' });
+  }
+};
+
 const DownArrow = () => (
   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '4px' }}>
     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -103,6 +110,7 @@ function App() {
       const data = await response.json();
       if (response.ok && data.success === 'true') {
         setInquiryStatus('success');
+        fireGtagConversion(); // Fire conversion on successful inquiry submission
       } else {
         setInquiryStatus('error');
       }
@@ -568,6 +576,7 @@ function App() {
                     <a 
                       href={`mailto:thebluevista@gmail.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
                       className="proceed-checkout-btn"
+                      onClick={fireGtagConversion}
                       style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}
                     >
                       Inquire via Email
@@ -577,7 +586,8 @@ function App() {
                       href={`https://wa.me/918527847888?text=Hello%20Blue%20Vista%20Concierge!%20I%20would%20like%20to%20inquire%20about%20booking%20the%20${encodeURIComponent(selectedRoom.name)}%20from%20${checkIn}%20to%20${checkOut}%20for%20${encodeURIComponent(guests)}.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="checkout-back-btn" 
+                      className="checkout-back-btn"
+                      onClick={fireGtagConversion}
                       style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}
                     >
                       Inquire via WhatsApp
@@ -667,11 +677,11 @@ function App() {
                     We welcome walk-ins, but highly recommend securing a table in advance, especially for dinner and weekend brunches.
                   </p>
                   
-                  <a href="tel:+918527847888" className="proceed-checkout-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
+                  <a href="tel:+918527847888" className="proceed-checkout-btn" onClick={fireGtagConversion} style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
                     Call Concierge to Reserve
                   </a>
                   
-                  <a href="mailto:thebluevista@gmail.com?subject=Vistra Bistro Table Reservation Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                  <a href="mailto:thebluevista@gmail.com?subject=Vistra Bistro Table Reservation Inquiry" className="checkout-back-btn" onClick={fireGtagConversion} style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
                     Inquire via Email
                   </a>
                 </div>
@@ -770,11 +780,11 @@ function App() {
 
                   <div className="divider" style={{ margin: '1.5rem 0' }}></div>
 
-                  <a href="tel:+918527847888" className="proceed-checkout-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
+                  <a href="tel:+918527847888" className="proceed-checkout-btn" onClick={fireGtagConversion} style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}>
                     Contact Tours & Events
                   </a>
 
-                  <a href="mailto:thebluevista@gmail.com?subject=Private Event & Boardroom Booking Inquiry" className="checkout-back-btn" style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
+                  <a href="mailto:thebluevista@gmail.com?subject=Private Event & Boardroom Booking Inquiry" className="checkout-back-btn" onClick={fireGtagConversion} style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}>
                     Send Booking Inquiry
                   </a>
                 </div>
@@ -893,11 +903,11 @@ function App() {
               <h2>Need Travel Assistance or Tour Bookings?</h2>
               <p>Active residents can request premium airport transfers, book certified tour guides, day excursions, or secure priority Expo Mart passes instantly. Our concierge team will organize your custom itinerary immediately.</p>
               
-              <a href="tel:+918527847888" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', marginRight: '1rem', lineHeight: '45px', height: '45px', padding: '0 2.5rem' }}>
+              <a href="tel:+918527847888" className="start-exploring-btn" onClick={fireGtagConversion} style={{ display: 'inline-block', textDecoration: 'none', marginRight: '1rem', lineHeight: '45px', height: '45px', padding: '0 2.5rem' }}>
                 Call Travel Desk
               </a>
               
-              <a href="mailto:thebluevista@gmail.com?subject=Travel & Tour Concierge Inquiry" className="start-exploring-btn" style={{ display: 'inline-block', textDecoration: 'none', lineHeight: '45px', height: '45px', padding: '0 2.5rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}>
+              <a href="mailto:thebluevista@gmail.com?subject=Travel & Tour Concierge Inquiry" className="start-exploring-btn" onClick={fireGtagConversion} style={{ display: 'inline-block', textDecoration: 'none', lineHeight: '45px', height: '45px', padding: '0 2.5rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}>
                 Email Travel Desk
               </a>
             </div>
