@@ -100,15 +100,17 @@ function App() {
     setInquiryStatus('submitting');
     try {
       const formData = new FormData(e.target);
-      const response = await fetch("https://formsubmit.co/ajax/thebluevista@gmail.com", {
+      // Web3Forms – reliable CORS-friendly form service (replaces formsubmit.co)
+      // Get your free key at https://web3forms.com → enter thebluevista@gmail.com
+      formData.append('access_key', 'ca1ea479-59ef-465d-9647-94a23a7ed025');
+      formData.append('subject', 'New Inquiry – The Blue Vista Hotel');
+      formData.append('from_name', 'The Blue Vista Website');
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
       });
       const data = await response.json();
-      if (response.ok && data.success === 'true') {
+      if (data.success) {
         setInquiryStatus('success');
         fireGtagConversion(); // Fire conversion on successful inquiry submission
       } else {
