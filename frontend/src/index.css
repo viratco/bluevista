@@ -447,8 +447,8 @@ body {
 .dining-food-img {
   position: absolute;
   bottom: -5%;
-  left: -15%;
-  width: 50%;
+  left: -32%;
+  width: 40%;
   max-width: 400px;
   object-fit: cover;
   border: 1px solid rgba(216, 195, 165, 0.25);
@@ -1000,6 +1000,7 @@ body {
   }
 
   .about-section {
+    display: flex;
     flex-direction: column;
     padding: 6rem 5%;
   }
@@ -1007,11 +1008,15 @@ body {
     width: 100%;
     height: 500px;
   }
+  .img-overlay {
+    display: none;
+  }
   .about-content {
     max-width: 100%;
   }
 
   .dining-section {
+    display: flex;
     flex-direction: column;
   }
   .dining-content {
@@ -1020,6 +1025,9 @@ body {
   }
   .dining-left {
     height: 400px;
+  }
+  .dining-food-img {
+    display: none;
   }
 
   .services-section {
