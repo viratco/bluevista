@@ -157,6 +157,56 @@ body {
   background: rgba(216, 195, 165, 0.1);
 }
 
+/* Navigation Dropdown Container */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #111111;
+  min-width: 180px;
+  box-shadow: 0px 8px 24px 0px rgba(0,0,0,0.6);
+  border: 1px solid rgba(216, 195, 165, 0.3);
+  z-index: 1000;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+/* Links inside the dropdown */
+.nav-dropdown-content a {
+  color: #c0c0c0;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Change color of dropdown links on hover */
+.nav-dropdown-content a:hover {
+  background-color: rgba(216, 195, 165, 0.1);
+  color: #d8c3a5;
+}
+
+/* Show the dropdown menu on hover */
+.nav-dropdown:hover .nav-dropdown-content {
+  display: block;
+}
+
 .main-content {
   flex: 1;
   display: flex;
@@ -2638,7 +2688,7 @@ body {
 
 /* Call To Action Banner */
 .support-cta-banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/blue_vista_bed.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/blue_vista_bed.png');
   background-size: cover;
   background-position: center;
   padding: 8rem 2rem;

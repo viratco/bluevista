@@ -57,7 +57,7 @@ const roomsData = [
     bed: '2 King Beds',
     bath: '1 Bathroom',
     desc: 'Specially designed suite featuring exquisite teakwood furnishings, warm mood lighting, and modern workspace. Ideal for premium corporate guests.',
-    image: '/blue_vista_bed.jpg',
+    image: '/blue_vista_bed.png',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Work Desk', 'Mini Bar', 'Premium Toiletries']
   }
 ];
@@ -217,7 +217,27 @@ function App() {
 
           <div className="nav-right">
             <span className="lang-toggle">EN / FR</span>
-            <button className="nav-btn" onClick={() => setView('availability')}>Check Availability</button>
+            <div className="nav-dropdown">
+              <button className="nav-btn">Book Online</button>
+              <div className="nav-dropdown-content">
+                <a 
+                  href="https://www.makemytrip.com/hotels/the_blue_vista-details-greater_noida.html?cmp=SEM%7CD%7CDH%7CG%7CDSA%7CDH_DSA_Mobile%7CPmax&gad_source=1&gad_campaignid=21268867335&gbraid=0AAAAAD5Az1TapmHCvoV9CcpHhTNPxP2C5&gclid=CjwKCAjw6MPRBhBTEiwAd-7Mrwam3BnLZQJ750wnUv8WbhsIZ_OWnxy5nIAraTFxByjwQ5FvPG53OhoCkUUQAvD_BwE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={fireGtagConversion}
+                >
+                  MakeMyTrip
+                </a>
+                <a 
+                  href="https://www.agoda.com/en-in/the-blue-vista/hotel/new-delhi-and-ncr-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922866&numberOfBedrooms=&familyMode=false&adults=1&children=0&rooms=1&maxRooms=0&checkIn=2026-06-25&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=-1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=dd2e710e-88c4-4639-9c69-76f32ba50e6b&los=1&searchrequestid=1cb9b50e-af2b-4137-ab68-21355b4a5b2c&ds=Uf0OZ3yYg%2F%2B%2F%2Fs%2BW"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={fireGtagConversion}
+                >
+                  Agoda
+                </a>
+              </div>
+            </div>
           </div>
         </header>
 
@@ -276,7 +296,7 @@ function App() {
         <>
           <section className="about-section">
             <div className="about-images">
-              <img src="/blue_vista_bed.jpg" alt="Boutique Luxury Suite" className="img-main" />
+              <img src="/blue_vista_bed.png" alt="Boutique Luxury Suite" className="img-main" />
               <img src="/blue_vista_img2.png" alt="Guest Suite Corridor" className="img-overlay" />
             </div>
             <div className="about-content">
@@ -455,25 +475,6 @@ function App() {
       {/* VIEW: AVAILABILITY ROOM SEARCH RESULTS */}
       {view === 'availability' && (
         <div className="availability-page animate-fade-in">
-          <div className="search-summary-bar">
-            <div className="summary-item">
-              <span className="summary-label">CHECK IN</span>
-              <span className="summary-value">{checkIn}</span>
-            </div>
-            <div className="summary-item border-left">
-              <span className="summary-label">CHECK OUT</span>
-              <span className="summary-value">{checkOut}</span>
-            </div>
-            <div className="summary-item border-left">
-              <span className="summary-label">NIGHTS</span>
-              <span className="summary-value">{nights}</span>
-            </div>
-            <div className="summary-item border-left">
-              <span className="summary-label">GUESTS</span>
-              <span className="summary-value">{guests}</span>
-            </div>
-            <button className="edit-search-btn" onClick={() => setView('home')}>Modify Search</button>
-          </div>
 
           <div className="availability-layout">
             {/* Rooms List Column */}
@@ -491,10 +492,6 @@ function App() {
                     <div className="room-card-body">
                       <div className="room-card-header">
                         <h3>{room.name}</h3>
-                        <div className="room-card-price">
-                          <span className="rate">{formatPrice(room.price)}</span>
-                          <span className="per-night">/ night</span>
-                        </div>
                       </div>
                       
                       <div className="room-card-specs">
@@ -556,31 +553,41 @@ function App() {
                     <div className="divider"></div>
                     <div className="selected-room-info">
                       <h4>{selectedRoom.name}</h4>
-                      <p className="base-price">{formatPrice(selectedRoom.price)} x {nights} nights</p>
                     </div>
                     
                     <div className="divider"></div>
-                    <div className="invoice-rows">
-                      <div className="invoice-row">
-                        <span>Room Total:</span>
-                        <span>{formatPrice(selectedRoom.price * nights)}</span>
-                      </div>
-                      <div className="invoice-row">
-                        <span>GST / Service Charge (12%):</span>
-                        <span>{formatPrice(selectedRoom.price * nights * 0.12)}</span>
-                      </div>
-                      <div className="divider"></div>
-                      <div className="invoice-row grand-total">
-                        <span>Grand Total:</span>
-                        <span className="price-bold">{formatPrice((selectedRoom.price * nights) * 1.12)}</span>
-                      </div>
-                    </div>
-
+                    <h4 style={{ fontSize: '0.75rem', color: '#a0a0a0', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Book Online</h4>
+                    
                     <a 
-                      href={`mailto:thebluevista@gmail.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
+                      href="https://www.makemytrip.com/hotels/the_blue_vista-details-greater_noida.html?cmp=SEM%7CD%7CDH%7CG%7CDSA%7CDH_DSA_Mobile%7CPmax&gad_source=1&gad_campaignid=21268867335&gbraid=0AAAAAD5Az1TapmHCvoV9CcpHhTNPxP2C5&gclid=CjwKCAjw6MPRBhBTEiwAd-7Mrwam3BnLZQJ750wnUv8WbhsIZ_OWnxy5nIAraTFxByjwQ5FvPG53OhoCkUUQAvD_BwE"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="proceed-checkout-btn"
                       onClick={fireGtagConversion}
-                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0 }}
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0, marginTop: '0.5rem' }}
+                    >
+                      Book via MakeMyTrip
+                    </a>
+                    
+                    <a 
+                      href="https://www.agoda.com/en-in/the-blue-vista/hotel/new-delhi-and-ncr-in.html?countryId=35&finalPriceView=1&isShowMobileAppPrice=false&cid=1922866&numberOfBedrooms=&familyMode=false&adults=1&children=0&rooms=1&maxRooms=0&checkIn=2026-06-25&isCalendarCallout=false&childAges=&numberOfGuest=0&missingChildAges=false&travellerType=-1&showReviewSubmissionEntry=false&currencyCode=INR&isFreeOccSearch=false&tag=dd2e710e-88c4-4639-9c69-76f32ba50e6b&los=1&searchrequestid=1cb9b50e-af2b-4137-ab68-21355b4a5b2c&ds=Uf0OZ3yYg%2F%2B%2F%2Fs%2BW"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="proceed-checkout-btn"
+                      onClick={fireGtagConversion}
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0, marginTop: '0.75rem', background: 'transparent', border: '1px solid #d8c3a5', color: '#d8c3a5' }}
+                    >
+                      Book via Agoda
+                    </a>
+
+                    <div className="divider" style={{ margin: '1.5rem 0 1rem 0' }}></div>
+                    <h4 style={{ fontSize: '0.75rem', color: '#a0a0a0', marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Direct Inquiry</h4>
+                    
+                    <a 
+                      href={`mailto:thebluevista@gmail.com?subject=Booking Inquiry for ${selectedRoom.name}&body=Hello Blue Vista Concierge,%0D%0A%0D%0AI would like to inquire about booking the ${selectedRoom.name} for the following dates:%0D%0ACheck-In: ${checkIn}%0D%0ACheck-Out: ${checkOut}%0D%0AGuests: ${guests}%0D%0A%0D%0APlease let me know availability and booking details.`}
+                      className="checkout-back-btn"
+                      onClick={fireGtagConversion}
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', padding: 0, border: '1px solid rgba(255, 255, 255, 0.15)', color: '#fff', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                     >
                       Inquire via Email
                     </a>
@@ -591,7 +598,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="checkout-back-btn"
                       onClick={fireGtagConversion}
-                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0 }}
+                      style={{ display: 'block', textDecoration: 'none', textAlign: 'center', lineHeight: '45px', height: '45px', marginTop: '0.75rem', padding: 0, border: '1px solid #25D366', color: '#25D366', borderRadius: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                     >
                       Inquire via WhatsApp
                     </a>
@@ -599,7 +606,7 @@ function App() {
                 ) : (
                   <div className="no-room-selected">
                     <div className="divider"></div>
-                    <p>Please select a room from the list to view pricing and proceed with booking.</p>
+                    <p>Please select a room from the list to proceed with booking.</p>
                   </div>
                 )}
               </div>
