@@ -391,7 +391,7 @@ function App() {
 
           <section className="testimonial-section">
             <div className="testimonial-left">
-              <img src="/room_chairs.jpg" alt="Stylish interior with armchair" />
+              <img src="/reception.jpg" alt="The Blue Vista Reception Lobby" />
             </div>
             <div className="testimonial-right">
               <div className="testimonial-right-content">
