@@ -360,11 +360,11 @@ function App() {
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
             <div className="grid-item img-item">
-              <img src="/blue_vista_terrace.png" alt="Lush Garden Terrace and Outdoor Lounge" />
+              <img src="/kettle_tray.jpg" alt="Lush Garden Terrace and Outdoor Lounge" />
             </div>
 
             <div className="grid-item img-item">
-              <img src="/blue_vista_lounge.png" alt="Modern Business Lounge Workstation" />
+              <img src="/room_desk.jpg" alt="Modern Business Lounge Workstation" />
             </div>
             <div className="grid-item text-item">
               <p className="subtitle">EXECUTIVE SPACE</p>
@@ -705,7 +705,7 @@ function App() {
       {view === 'amenities' && (
         <div className="amenities-page animate-fade-in">
           {/* Subpage Hero */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/blue_vista_terrace.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/kettle_tray.jpg")' }}>
             <div className="hero-inner">
               <p className="subtitle">LUXURY AMENITIES & MEETING HALLS</p>
               <h1 className="subpage-title">Facilities & Experiences</h1>
@@ -719,7 +719,7 @@ function App() {
               
               {/* Card 1: Lush Garden Terrace & Patio */}
               <div className="amenity-detail-card">
-                <img src="/blue_vista_terrace.png" alt="Lush Garden Terrace and Outdoor Lounge" className="amenity-card-hero-img" />
+                <img src="/kettle_tray.jpg" alt="Lush Garden Terrace and Outdoor Lounge" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
                   <span className="card-tag">OUTDOOR LIVING</span>
                   <h2>Lush Garden Terrace & Patio</h2>
@@ -753,7 +753,7 @@ function App() {
 
               {/* Card 3: Modern Business Lounge */}
               <div className="amenity-detail-card">
-                <img src="/blue_vista_lounge.png" alt="Modern Business Lounge Workstation" className="amenity-card-hero-img" />
+                <img src="/room_desk.jpg" alt="Modern Business Lounge Workstation" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
                   <span className="card-tag">EXECUTIVE SERVICES</span>
                   <h2>Modern Business Lounge</h2>
