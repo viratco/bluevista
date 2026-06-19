@@ -31,7 +31,7 @@ const roomsData = [
     bed: '2 King Beds',
     bath: '2 Bathrooms',
     desc: 'Breathtaking views of the Ansal Golf Links valley. Combines modern warmth with contemporary Greater Noida boutique charm. Includes a fully stocked minibar, Nespresso coffee maker, and standard toiletries.',
-    image: '/loft.png',
+    image: '/room_double.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee Machine', 'Room Service']
   },
   {
@@ -44,7 +44,7 @@ const roomsData = [
     bed: '3 King Beds',
     bath: '3 Bathrooms',
     desc: 'Our flagship prestige residency. Ultimate spacious layout including separate living room, dining zone, and massive master bedrooms. Perfect for elite travelers or family gatherings.',
-    image: '/testimonial_img.png',
+    image: '/room_towel.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Living Room', 'Mini Bar', 'Kitchenette', 'Private Balcony']
   },
   {
@@ -57,7 +57,7 @@ const roomsData = [
     bed: '2 King Beds',
     bath: '1 Bathroom',
     desc: 'Specially designed suite featuring exquisite teakwood furnishings, warm mood lighting, and modern workspace. Ideal for premium corporate guests.',
-    image: '/blue_vista_bed.png',
+    image: '/room_twin.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Work Desk', 'Mini Bar', 'Premium Toiletries']
   }
 ];
@@ -296,8 +296,8 @@ function App() {
         <>
           <section className="about-section">
             <div className="about-images">
-              <img src="/blue_vista_bed.png" alt="Boutique Luxury Suite" className="img-main" />
-              <img src="/blue_vista_img2.png" alt="Guest Suite Corridor" className="img-overlay" />
+              <img src="/room_double.jpg" alt="Boutique Luxury Suite" className="img-main" />
+              <img src="/room_chairs.jpg" alt="Guest Suite Corridor" className="img-overlay" />
             </div>
             <div className="about-content">
               <p className="subtitle">STAY IN THE HEART OF GREATER NOIDA</p>
@@ -391,7 +391,7 @@ function App() {
 
           <section className="testimonial-section">
             <div className="testimonial-left">
-              <img src="/testimonial_img.png" alt="Stylish interior with armchair" />
+              <img src="/room_chairs.jpg" alt="Stylish interior with armchair" />
             </div>
             <div className="testimonial-right">
               <div className="testimonial-right-content">
