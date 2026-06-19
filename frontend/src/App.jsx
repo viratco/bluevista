@@ -352,25 +352,25 @@ function App() {
             </div>
 
             <div className="grid-item text-item">
-              <p className="subtitle">OUTDOOR LIVING</p>
-              <h3 className="grid-heading">Lush Garden Terrace</h3>
+              <p className="subtitle">IN-ROOM COMFORT</p>
+              <h3 className="grid-heading">In-Suite Tea & Coffee Setup</h3>
               <p className="grid-desc">
-                Unwind on our beautifully landscaped outdoor garden terrace and patio. The perfect spot to enjoy high tea, read, or catch a tranquil sunset over the Ansal Golf Links valley.
+                Enjoy premium in-room refreshments with our curated tea and coffee setup, featuring an electric kettle, a selection of teas, Nescafe coffee, and Tata Copper bottled water for a refreshing stay.
               </p>
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
             <div className="grid-item img-item">
-              <img src="/kettle_tray.jpg" alt="Lush Garden Terrace and Outdoor Lounge" />
+              <img src="/kettle_tray.jpg" alt="In-Suite Tea & Coffee Setup" />
             </div>
 
             <div className="grid-item img-item">
-              <img src="/room_desk.jpg" alt="Modern Business Lounge Workstation" />
+              <img src="/room_desk.jpg" alt="In-Suite Executive Workspace" />
             </div>
             <div className="grid-item text-item">
               <p className="subtitle">EXECUTIVE SPACE</p>
-              <h3 className="grid-heading">Modern Business Lounge</h3>
+              <h3 className="grid-heading">In-Suite Executive Workspace</h3>
               <p className="grid-desc">
-                A quiet, professional workspace equipped with secure high-speed Wi-Fi, elegant wooden furnishings, and complete business services to ensure seamless productivity.
+                Stay productive on the go with our in-room workstation. Equipped with a spacious wooden writing desk, comfortable seating, high-speed Wi-Fi, and a wall-mounted flat screen TV.
               </p>
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
@@ -663,7 +663,7 @@ function App() {
             <div className="table-reservation-section">
               <div className="sticky-sidebar-card glass-morphic">
                 <h3>Vistra Bistro Dining</h3>
-                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Secure your sitting room or garden terrace overlook table at Vistra Bistro.</p>
+                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Secure your sitting room or dining table for an exceptional culinary experience at Vistra Bistro.</p>
                 <div className="divider"></div>
                 
                 <div className="dining-info-details" style={{ fontSize: '0.85rem', lineHeight: '1.8', color: '#cccccc' }}>
@@ -709,7 +709,7 @@ function App() {
             <div className="hero-inner">
               <p className="subtitle">LUXURY AMENITIES & MEETING HALLS</p>
               <h1 className="subpage-title">Facilities & Experiences</h1>
-              <p className="hero-desc">Experience our tailored services. From high tea on our lush garden terrace patio to modern meeting boardrooms and standard business lounge hubs.</p>
+              <p className="hero-desc">Experience our tailored services. From premium in-suite refreshments to modern meeting boardrooms and standard in-room workstations.</p>
             </div>
           </div>
 
@@ -717,19 +717,19 @@ function App() {
             {/* Left Content detailing Spa, Gym, Events */}
             <div className="amenities-cards-column">
               
-              {/* Card 1: Lush Garden Terrace & Patio */}
+              {/* Card 1: In-Suite Tea & Coffee Setup */}
               <div className="amenity-detail-card">
-                <img src="/kettle_tray.jpg" alt="Lush Garden Terrace and Outdoor Lounge" className="amenity-card-hero-img" />
+                <img src="/kettle_tray.jpg" alt="In-Suite Tea & Coffee Setup" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
-                  <span className="card-tag">OUTDOOR LIVING</span>
-                  <h2>Lush Garden Terrace & Patio</h2>
-                  <p className="card-lead">Unwind on our beautifully landscaped outdoor garden terrace and patio.</p>
+                  <span className="card-tag">IN-ROOM COMFORT</span>
+                  <h2>In-Suite Tea & Coffee Setup</h2>
+                  <p className="card-lead">Start your day or unwind in the evening with premium in-suite refreshments.</p>
                   <p className="card-body-text">
-                    Nestled overlooking the scenic Ansal Golf Links valley, our lush garden terrace offers a refreshing escape under the open Greater Noida sky. Enjoy single-origin cold brews or traditional slow-brewed kesaria chai from Vistra Bistro in a tranquil outdoor setting, perfect for reading, casual meetings, or watching the sunset.
+                    Every suite at Blue Vista is equipped with a high-quality electric kettle, fine ceramic cups and saucers, and a selection of premium instant coffee packets, sugar, and stirrers. We also provide complimentary bottles of premium Tata Copper mineral water to ensure you stay refreshed and hydrated throughout your stay.
                   </p>
                   <div className="amenity-specs">
-                    <span><strong>Hours:</strong> 06:00 AM - 11:00 PM</span>
-                    <span><strong>Services:</strong> High Tea, Sunset View, Outdoor Seating</span>
+                    <span><strong>Availability:</strong> 24/7 (Complimentary in all suites)</span>
+                    <span><strong>Includes:</strong> Electric Kettle, Select Teas & Coffees, Tata Copper Water</span>
                   </div>
                 </div>
               </div>
@@ -751,19 +751,19 @@ function App() {
                 </div>
               </div>
 
-              {/* Card 3: Modern Business Lounge */}
+              {/* Card 3: In-Suite Executive Workspace */}
               <div className="amenity-detail-card">
-                <img src="/room_desk.jpg" alt="Modern Business Lounge Workstation" className="amenity-card-hero-img" />
+                <img src="/room_desk.jpg" alt="In-Suite Executive Workspace" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
                   <span className="card-tag">EXECUTIVE SERVICES</span>
-                  <h2>Modern Business Lounge</h2>
-                  <p className="card-lead">Maintain seamless professional productivity with our standard business lounge workstation.</p>
+                  <h2>In-Suite Executive Workspace</h2>
+                  <p className="card-lead">Maintain seamless professional productivity right from the comfort of your suite.</p>
                   <p className="card-body-text">
-                    Equipped with ergonomic seating, secure high-speed Wi-Fi, and standard workstations, our business lounge provides a quiet environment to focus. Perfect for business travelers who require photocopying, document printing, or quick executive standups.
+                    Designed for business travelers and remote professionals, our suites feature a dedicated writing desk, high-speed Wi-Fi connectivity, comfortable seating, and convenient power outlets. A wall-mounted flat-screen TV is positioned perfectly to allow you to relax or view presentations from your desk.
                   </p>
                   <div className="amenity-specs">
                     <span><strong>Hours:</strong> 24 Hours (Residents)</span>
-                    <span><strong>Equipped:</strong> Secure Wi-Fi, Workstations, Printing/Scanning</span>
+                    <span><strong>Equipped:</strong> Writing Desk, High-Speed Wi-Fi, Wall-Mounted TV, Comfort Chairs</span>
                   </div>
                 </div>
               </div>
@@ -774,7 +774,7 @@ function App() {
             <div className="amenities-inquiry-column">
               <div className="sticky-sidebar-card glass-morphic">
                 <h3>Private Bookings</h3>
-                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Schedule boardrooms, host private events, or request custom terrace catering layouts.</p>
+                <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Schedule boardrooms, host private events, or request custom dining and catering layouts.</p>
                 <div className="divider"></div>
 
                 <div className="amenities-info-details" style={{ fontSize: '0.85rem', lineHeight: '1.8', color: '#cccccc' }}>
@@ -783,9 +783,9 @@ function App() {
                     Boardrooms are available for hourly or full-day bookings. High-speed fiber internet and custom Vistra Bistro catering are fully included upon request.
                   </p>
 
-                  <h4 style={{ color: '#d8c3a5', fontFamily: "'Playfair Display', serif", fontSize: '1rem', marginBottom: '0.5rem' }}>Terrace Gatherings</h4>
+                  <h4 style={{ color: '#d8c3a5', fontFamily: "'Playfair Display', serif", fontSize: '1rem', marginBottom: '0.5rem' }}>Gourmet Catering</h4>
                   <p style={{ fontSize: '0.8rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>
-                    The outdoor Garden Terrace patio can be reserved for private high tea gatherings or elegant evening cocktails of up to 40 guests.
+                    We offer tailored catering services from Vistra Bistro for all events hosted in our boutique boardrooms and banquet hall.
                   </p>
 
                   <div className="divider" style={{ margin: '1.5rem 0' }}></div>
