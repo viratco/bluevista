@@ -16,7 +16,7 @@ body {
 .hero-container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85)), url('/reception.jpg');
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.85)), url('/blue_vista_hero_day.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
