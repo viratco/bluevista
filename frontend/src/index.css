@@ -16,7 +16,7 @@ body {
 .hero-container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.85)), url('/blue_vista_hero_day.png');
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85)), url('/reception.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -2688,7 +2688,7 @@ body {
 
 /* Call To Action Banner */
 .support-cta-banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/blue_vista_bed.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)), url('/room_double.jpg');
   background-size: cover;
   background-position: center;
   padding: 8rem 2rem;

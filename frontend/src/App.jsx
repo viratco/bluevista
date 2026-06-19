@@ -808,7 +808,7 @@ function App() {
       {view === 'travel-tours' && (
         <div className="support-page animate-fade-in">
           {/* Subpage Hero Banner */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.95)), url("/hospitality_bg.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.65), rgba(5, 5, 5, 0.95)), url("/room_desk.jpg")' }}>
             <div className="hero-inner">
               <p className="subtitle">EXCEPTIONAL GUEST SERVICES</p>
               <h1 className="subpage-title">Travel & Tours</h1>
@@ -929,7 +929,7 @@ function App() {
       {view === 'privacy-policy' && (
         <div className="privacy-page animate-fade-in" style={{ backgroundColor: '#1a1a1a', color: '#fff', minHeight: '100vh' }}>
           {/* Subpage Hero Banner */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.95)), url("/hospitality_bg.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.95)), url("/room_desk.jpg")' }}>
             <div className="hero-inner">
               <p className="subtitle">LEGAL INFORMATION</p>
               <h1 className="subpage-title" style={{ fontSize: '3rem' }}>Privacy Policy</h1>
