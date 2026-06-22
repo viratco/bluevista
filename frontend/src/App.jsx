@@ -43,8 +43,8 @@ const roomsData = [
     capacity: '2 Guests',
     bed: '1 King Bed',
     bath: '1 Bathroom',
-    desc: 'Spacious deluxe double room featuring premium wooden furniture, a king-size bed, a mini bar, and modern bathroom amenities. Offers comfort and privacy in a cozy atmosphere.',
-    image: '/room_double_pot.png',
+    desc: 'Exquisite deluxe room featuring a striking botanical geometric wallpaper accent wall, custom warm lighting, a large king-size bed with premium red floral pattern cushions, high-speed Wi-Fi, and a writing desk.',
+    image: '/room_wallpaper.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee/Tea Maker', 'Room Service']
   },
   {
