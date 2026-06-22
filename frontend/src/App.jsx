@@ -80,10 +80,10 @@ const roomsData = [
     price: 16500,
     size: '60 m²',
     capacity: '4 Guests',
-    bed: '2 King Beds',
+    bed: '1 Double Bed & 2 Single Beds',
     bath: '2 Bathrooms',
-    desc: 'Our most spacious suite featuring two king beds, separate living space, two elegant bathrooms, and top-tier amenities. Designed for family stays or group travel.',
-    image: '/room_towel_vase.png',
+    desc: 'Our premier multi-room family suite featuring two single beds in the main area, a comfortable sofa living zone with a flat-screen TV, and an adjoining master bedroom with a large double bed. Perfect for families or group stays.',
+    image: '/room_suite_family.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Living Area', 'Mini Bar', 'Kitchenette', 'Room Service']
   }
 ];
