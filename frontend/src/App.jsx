@@ -23,42 +23,68 @@ const Star = () => (
 const roomsData = [
   {
     id: 1,
-    name: 'Grand Deluxe Suite',
-    tag: 'RECOMMENDED',
-    price: 12500,
-    size: '55 m²',
-    capacity: '4 Guests',
-    bed: '2 King Beds',
-    bath: '2 Bathrooms',
-    desc: 'Breathtaking views of the Ansal Golf Links valley. Combines modern warmth with contemporary Greater Noida boutique charm. Includes a fully stocked minibar, Nespresso coffee maker, and standard toiletries.',
+    name: 'Standard Double Room',
+    tag: 'ESSENTIAL',
+    price: 8500,
+    size: '28 m²',
+    capacity: '2 Guests',
+    bed: '1 Queen Bed',
+    bath: '1 Bathroom',
+    desc: 'Comfortable and elegant room equipped with a plush double bed, clean linens, writing desk, flat-screen TV, and high-speed Wi-Fi. Perfect for solo business travelers or couples.',
     image: '/room_double.jpg',
-    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee Machine', 'Room Service']
+    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Writing Desk', 'Room Service']
   },
   {
     id: 2,
-    name: 'Prestige Suite',
+    name: 'Deluxe Double Room',
     tag: 'POPULAR',
-    price: 24000,
-    size: '200 m²',
-    capacity: '6 Guests',
-    bed: '3 King Beds',
-    bath: '3 Bathrooms',
-    desc: 'Our flagship prestige residency. Ultimate spacious layout including separate living room, dining zone, and massive master bedrooms. Perfect for elite travelers or family gatherings.',
-    image: '/room_towel.jpg',
-    features: ['Free Wi-Fi', 'Air Conditioning', 'Living Room', 'Mini Bar', 'Kitchenette', 'Private Balcony']
+    price: 10500,
+    size: '32 m²',
+    capacity: '2 Guests',
+    bed: '1 King Bed',
+    bath: '1 Bathroom',
+    desc: 'Spacious deluxe double room featuring premium wooden furniture, a king-size bed, a mini bar, and modern bathroom amenities. Offers comfort and privacy in a cozy atmosphere.',
+    image: '/room_double_pot.png',
+    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee/Tea Maker', 'Room Service']
   },
   {
     id: 3,
-    name: 'Signature Suite',
-    tag: 'EXECUTIVE',
-    price: 15000,
+    name: 'Standard Twin Beds Room',
+    tag: 'TWIN LAYOUT',
+    price: 9500,
+    size: '30 m²',
+    capacity: '2 Guests',
+    bed: '2 Single Beds',
+    bath: '1 Bathroom',
+    desc: 'Thoughtfully laid out twin room featuring two comfortable single beds side-by-side, high-speed Wi-Fi, writing desk, and custom room lighting. Perfect for corporate colleagues or friends.',
+    image: '/room_twin_lamp.png',
+    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Writing Desk', 'Room Service']
+  },
+  {
+    id: 4,
+    name: 'Super Deluxe Room',
+    tag: 'RECOMMENDED',
+    price: 12500,
+    size: '40 m²',
+    capacity: '3 Guests',
+    bed: '1 King Bed & 1 Sofa Bed',
+    bath: '1 Bathroom',
+    desc: 'Luxury room offering premium space, seating area, a large king-size bed, modern air conditioning, and enhanced toiletries. Ideal for guests seeking extra comfort.',
+    image: '/room_towel.jpg',
+    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee Machine', 'Room Service']
+  },
+  {
+    id: 5,
+    name: 'Suite Family Room',
+    tag: 'FAMILY SUITE',
+    price: 16500,
     size: '60 m²',
     capacity: '4 Guests',
     bed: '2 King Beds',
-    bath: '1 Bathroom',
-    desc: 'Specially designed suite featuring exquisite teakwood furnishings, warm mood lighting, and modern workspace. Ideal for premium corporate guests.',
-    image: '/room_twin.jpg',
-    features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Work Desk', 'Mini Bar', 'Premium Toiletries']
+    bath: '2 Bathrooms',
+    desc: 'Our most spacious suite featuring two king beds, separate living space, two elegant bathrooms, and top-tier amenities. Designed for family stays or group travel.',
+    image: '/room_towel_vase.png',
+    features: ['Free Wi-Fi', 'Air Conditioning', 'Living Area', 'Mini Bar', 'Kitchenette', 'Room Service']
   }
 ];
 
