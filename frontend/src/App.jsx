@@ -66,11 +66,11 @@ const roomsData = [
     tag: 'RECOMMENDED',
     price: 12500,
     size: '40 m²',
-    capacity: '3 Guests',
-    bed: '1 King Bed & 1 Sofa Bed',
+    capacity: '2 Guests',
+    bed: '1 King Bed',
     bath: '1 Bathroom',
-    desc: 'Luxury room offering premium space, seating area, a large king-size bed, modern air conditioning, and enhanced toiletries. Ideal for guests seeking extra comfort.',
-    image: '/room_towel.jpg',
+    desc: 'Premium luxury room featuring a soft floral wallpaper accent wall behind a large king-size bed decorated with handcrafted swan towel origami art and fresh flowers. Fully air-conditioned with modern bedside lighting.',
+    image: '/room_super_deluxe.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Mini Bar', 'Coffee Machine', 'Room Service']
   },
   {
