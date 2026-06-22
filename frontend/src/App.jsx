@@ -30,8 +30,8 @@ const roomsData = [
     capacity: '2 Guests',
     bed: '1 Queen Bed',
     bath: '1 Bathroom',
-    desc: 'Comfortable and elegant room equipped with a plush double bed, clean linens, writing desk, flat-screen TV, and high-speed Wi-Fi. Perfect for solo business travelers or couples.',
-    image: '/room_double.jpg',
+    desc: 'Comfortable and elegant room featuring a dark wildlife wallpaper accent wall, plush double bed with printed cushions, a cozy seating corner with two armchairs and a coffee table, high-speed Wi-Fi, and a flat-screen TV.',
+    image: '/room_standard_double.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Writing Desk', 'Room Service']
   },
   {
