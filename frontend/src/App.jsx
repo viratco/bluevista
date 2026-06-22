@@ -56,8 +56,8 @@ const roomsData = [
     capacity: '2 Guests',
     bed: '2 Single Beds',
     bath: '1 Bathroom',
-    desc: 'Thoughtfully laid out twin room featuring two comfortable single beds side-by-side, high-speed Wi-Fi, writing desk, and custom room lighting. Perfect for corporate colleagues or friends.',
-    image: '/room_twin_lamp.png',
+    desc: 'Beautifully laid out twin room featuring a soft floral wallpaper accent wall behind two comfortable single beds side-by-side, a cozy seating area with velvet armchairs, high-speed Wi-Fi, and a flat-screen TV.',
+    image: '/room_standard_twin.jpg',
     features: ['Free Wi-Fi', 'Air Conditioning', 'Flat-screen TV', 'Writing Desk', 'Room Service']
   },
   {
