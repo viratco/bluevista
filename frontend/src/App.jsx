@@ -322,8 +322,8 @@ function App() {
         <>
           <section className="about-section">
             <div className="about-images">
-              <img src="/room_double.jpg" alt="Boutique Luxury Suite" className="img-main" />
-              <img src="/room_chairs.jpg" alt="Guest Suite Corridor" className="img-overlay" />
+              <img src="/room_super_deluxe.jpg" alt="Boutique Luxury Suite" className="img-main" />
+              <img src="/bathroom.jpg" alt="Luxury Bathroom" className="img-overlay" />
             </div>
             <div className="about-content">
               <p className="subtitle">STAY IN THE HEART OF GREATER NOIDA</p>
@@ -390,7 +390,7 @@ function App() {
             </div>
 
             <div className="grid-item img-item">
-              <img src="/room_desk.jpg" alt="In-Suite Executive Workspace" />
+              <img src="/room_desk_enhanced.png" alt="In-Suite Executive Workspace" />
             </div>
             <div className="grid-item text-item">
               <p className="subtitle">EXECUTIVE SPACE</p>
@@ -779,7 +779,7 @@ function App() {
 
               {/* Card 3: In-Suite Executive Workspace */}
               <div className="amenity-detail-card">
-                <img src="/room_desk.jpg" alt="In-Suite Executive Workspace" className="amenity-card-hero-img" />
+                <img src="/room_desk_enhanced.png" alt="In-Suite Executive Workspace" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
                   <span className="card-tag">EXECUTIVE SERVICES</span>
                   <h2>In-Suite Executive Workspace</h2>
