@@ -366,6 +366,7 @@ body {
   align-items: flex-start;
   max-width: 650px;
   padding-left: 5%;
+  padding-right: 15%;
   z-index: 3;
 }
 
