@@ -731,11 +731,11 @@ function App() {
       {view === 'amenities' && (
         <div className="amenities-page animate-fade-in">
           {/* Subpage Hero */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/kettle_tray.jpg")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/restaurant.jpg")' }}>
             <div className="hero-inner">
               <p className="subtitle">LUXURY AMENITIES & MEETING HALLS</p>
               <h1 className="subpage-title">Facilities & Experiences</h1>
-              <p className="hero-desc">Experience our tailored services. From premium in-suite refreshments to modern meeting boardrooms and standard in-room workstations.</p>
+              <p className="hero-desc">Experience our tailored services. From fine dining at Vistra Bistro to modern meeting boardrooms and dedicated in-suite executive workstations.</p>
             </div>
           </div>
 
@@ -743,19 +743,19 @@ function App() {
             {/* Left Content detailing Spa, Gym, Events */}
             <div className="amenities-cards-column">
               
-              {/* Card 1: In-Suite Tea & Coffee Setup */}
+              {/* Card 1: Vistra Bistro Fine Dining */}
               <div className="amenity-detail-card">
-                <img src="/kettle_tray.jpg" alt="In-Suite Tea & Coffee Setup" className="amenity-card-hero-img" />
+                <img src="/restaurant.jpg" alt="Vistra Bistro Fine Dining" className="amenity-card-hero-img" />
                 <div className="amenity-card-content">
-                  <span className="card-tag">IN-ROOM COMFORT</span>
-                  <h2>In-Suite Tea & Coffee Setup</h2>
-                  <p className="card-lead">Start your day or unwind in the evening with premium in-suite refreshments.</p>
+                  <span className="card-tag">FINE DINING</span>
+                  <h2>Vistra Bistro</h2>
+                  <p className="card-lead">Indulge in a sensory culinary journey of local flavors and international gourmet specialties.</p>
                   <p className="card-body-text">
-                    Every suite at Blue Vista is equipped with a high-quality electric kettle, fine ceramic cups and saucers, and a selection of premium instant coffee packets, sugar, and stirrers. We also provide complimentary bottles of premium Tata Copper mineral water to ensure you stay refreshed and hydrated throughout your stay.
+                    Our on-site restaurant and cafe, Vistra Bistro, offers a vibrant selection of handcrafted coffees, fresh pastries, traditional North Indian specialties, and continental favorites. Prepared fresh daily by our master culinary team, Vistra Bistro provides a sophisticated yet cozy setting perfect for leisurely breakfasts, business lunches, or romantic dinners.
                   </p>
                   <div className="amenity-specs">
-                    <span><strong>Availability:</strong> 24/7 (Complimentary in all suites)</span>
-                    <span><strong>Includes:</strong> Electric Kettle, Select Teas & Coffees, Tata Copper Water</span>
+                    <span><strong>Hours:</strong> 07:00 AM - 11:30 PM</span>
+                    <span><strong>Specialties:</strong> Kesaria Chai, Almond Croissants, Signature Dal Bukhara</span>
                   </div>
                 </div>
               </div>
