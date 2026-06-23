@@ -378,15 +378,15 @@ function App() {
             </div>
 
             <div className="grid-item text-item">
-              <p className="subtitle">IN-ROOM COMFORT</p>
-              <h3 className="grid-heading">In-Suite Tea & Coffee Setup</h3>
+              <p className="subtitle">FINE DINING</p>
+              <h3 className="grid-heading">Vistra Bistro</h3>
               <p className="grid-desc">
-                Enjoy premium in-room refreshments with our curated tea and coffee setup, featuring an electric kettle, a selection of teas, Nescafe coffee, and Tata Copper bottled water for a refreshing stay.
+                Indulge in a sensory culinary journey of local flavors and international gourmet specialties. Our on-site restaurant and cafe offers a vibrant selection of handcrafted coffees, fresh pastries, traditional North Indian specialties, and continental favorites.
               </p>
               <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
             </div>
             <div className="grid-item img-item">
-              <img src="/kettle_tray.jpg" alt="In-Suite Tea & Coffee Setup" />
+              <img src="/restaurant.jpg" alt="Vistra Bistro Fine Dining" />
             </div>
 
             <div className="grid-item img-item">
