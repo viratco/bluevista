@@ -645,7 +645,7 @@ function App() {
       {view === 'dining' && (
         <div className="dining-page animate-fade-in">
           {/* Subpage Hero Banner */}
-          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/restaurant.png")' }}>
+          <div className="subpage-hero" style={{ backgroundImage: 'linear-gradient(rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 0.95)), url("/restaurant.jpg")' }}>
             <div className="hero-inner">
               <p className="subtitle">ARTISANAL CAFE & FINE DINING</p>
               <h1 className="subpage-title">Vistra Bistro</h1>
