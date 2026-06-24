@@ -323,7 +323,7 @@ function App() {
           <section className="about-section">
             <div className="about-images">
               <img src="/room_super_deluxe.jpg" alt="Boutique Luxury Suite" className="img-main" />
-              <img src="/bathroom.jpg" alt="Luxury Bathroom" className="img-overlay" />
+              <img src="/blue_vista_actual.jpg" alt="Blue Vista Exterior" className="img-overlay" />
             </div>
             <div className="about-content">
               <p className="subtitle">STAY IN THE HEART OF GREATER NOIDA</p>
