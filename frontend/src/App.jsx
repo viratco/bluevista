@@ -405,31 +405,7 @@ function App() {
             </div>
           </section>
 
-          <section className="testimonial-section">
-            <div className="testimonial-left">
-              <img src="/reception.jpg" alt="The Blue Vista Reception Lobby" />
-            </div>
-            <div className="testimonial-right">
-              <div className="testimonial-right-content">
-                <div className="testimonial-stars">
-                  <Star /><Star /><Star /><Star /><Star />
-                </div>
-                <p className="testimonial-text">
-                  "Brilliant staff and exceptional customer service. The place is fantastic. Great facilities and atmosphere. Buffet breakfast daily is very generous."
-                </p>
-                <div className="testimonial-author">
-                  <p className="author-name">Luna Wayne</p>
-                  <p className="author-source">TRIPADVISOR</p>
-                </div>
-                <div className="testimonial-dots">
-                  <span className="dot active"></span>
-                  <span className="dot"></span>
-                  <span className="dot"></span>
-                  <span className="dot"></span>
-                </div>
-              </div>
-            </div>
-          </section>
+
 
           <section className="discover-section">
             <div className="discover-header">
