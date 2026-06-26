@@ -90,9 +90,9 @@ const roomsData = [
 
 const menuData = {
   bakery: [
-    { name: 'Warm Almond Croissant', price: 350, desc: 'House-made buttery pastry loaded with rich frangipane and toasted almond flakes.', veg: true },
-    { name: 'Avocado Toast & Poached Eggs', price: 550, desc: 'Smashed organic Hass avocado, cherry tomatoes, and organic poached eggs on toasted artisanal sourdough.', veg: false },
-    { name: 'Truffle Scrambled Brioche', price: 600, desc: 'Creamy slow-cooked eggs, shavings of black summer truffle, served on toasted buttery brioche.', veg: true }
+    { name: 'Hot Coffee', price: 79, desc: 'Freshly brewed aromatic hot coffee.', veg: true },
+    { name: 'Honey Chilli Potato', price: 179, desc: 'Crispy fried potatoes tossed in sweet honey and spicy chilli sauce.', veg: true },
+    { name: 'Veg Thali', price: 279, desc: 'A wholesome meal featuring dal, seasonal vegetables, paneer curry, rice, roti, and dessert.', veg: true }
   ],
   allday: [
     { name: 'Blue Vista Dal Bukhara', price: 850, desc: 'Our signature slow-cooked black lentils, simmered for 24 hours with vine-ripened tomatoes, cream, and organic butter.', veg: true, special: true },
