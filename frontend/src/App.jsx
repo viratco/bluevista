@@ -389,17 +389,7 @@ function App() {
               <img src="/restaurant.jpg" alt="Vistra Bistro Fine Dining" />
             </div>
 
-            <div className="grid-item img-item">
-              <img src="/room_desk_enhanced.png" alt="In-Suite Executive Workspace" />
-            </div>
-            <div className="grid-item text-item">
-              <p className="subtitle">EXECUTIVE SPACE</p>
-              <h3 className="grid-heading">In-Suite Executive Workspace</h3>
-              <p className="grid-desc">
-                Stay productive on the go with our in-room workstation. Equipped with a spacious wooden writing desk, comfortable seating, high-speed Wi-Fi, and a wall-mounted flat screen TV.
-              </p>
-              <button className="start-exploring-btn" onClick={() => setView('amenities')}>Discover More</button>
-            </div>
+
           </section>
 
           <section className="hospitality-section">
@@ -777,22 +767,6 @@ function App() {
                 </div>
               </div>
 
-              {/* Card 3: In-Suite Executive Workspace */}
-              <div className="amenity-detail-card">
-                <img src="/room_desk_enhanced.png" alt="In-Suite Executive Workspace" className="amenity-card-hero-img" />
-                <div className="amenity-card-content">
-                  <span className="card-tag">EXECUTIVE SERVICES</span>
-                  <h2>In-Suite Executive Workspace</h2>
-                  <p className="card-lead">Maintain seamless professional productivity right from the comfort of your suite.</p>
-                  <p className="card-body-text">
-                    Designed for business travelers and remote professionals, our suites feature a dedicated writing desk, high-speed Wi-Fi connectivity, comfortable seating, and convenient power outlets. A wall-mounted flat-screen TV is positioned perfectly to allow you to relax or view presentations from your desk.
-                  </p>
-                  <div className="amenity-specs">
-                    <span><strong>Hours:</strong> 24 Hours (Residents)</span>
-                    <span><strong>Equipped:</strong> Writing Desk, High-Speed Wi-Fi, Wall-Mounted TV, Comfort Chairs</span>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
